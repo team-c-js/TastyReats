@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla App Template</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
+
+    <main>
+      <load src="./partials/hero.html" />
+      <div class="container">
+        <div class="sidebar">
+          <load src="./partials/sidebar-categories.html" />
+          <load src="./partials/sidebar-popular.html" />
+        </div>
+        <div class="content">
+          <load src="./partials/search-form.html" />
+          <load src="./partials/foods.html" />
+          <load src="./partials/pagination.html" />
+        </div>
+        <load src="./partials/food-popup.html" />
+        <load src="./partials/raiting-popup.html" />
+        <load src="./partials/order-popup.html" />
+      </div>
+    </main>
+
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
