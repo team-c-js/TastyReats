@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/02-form.css" />
+  <script src="./js/02-form.js" type="module" defer></script>
+</head>
+
+<body>
+  <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
+  <div class="form-container">
+    <form class="feedback-form" autocomplete="off">
+      <label>
+        Email
+        <input type="email" name="email" class="feedback-form__input" autofocus />
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="8" class="feedback-form__input feedback-form__input--message"></textarea>
+      </label>
+      <button type="submit" class="feedback-form__button">Submit</button>
+    </form>
+  </div>
+</body>
+
+</html>
