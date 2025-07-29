@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="/TastyReats/assets/main-B5Qt9EMX.js"></script>
-    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-tryyMyqr.css">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-CylTM3yW.css">
   </head>
   <body>
     <h1>- Header - Gizem Demirci </h1>
@@ -98,7 +98,89 @@
 
         </div>
         <div class="content">
-          <h1>Search-form - Berkay Torunlar</h1>
+          <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Search Form</title>
+  <link rel="stylesheet" href="../css/search-form.css" />
+</head>
+<body>
+  <form class="search-form">
+    <input
+      class="search-input"
+      type="text"
+      name="query"
+      placeholder="Search for recipes..."
+    />
+    <button class="search-btn" type="submit" aria-label="search">
+      <svg class="search-icon" width="18" height="18">
+        <use href="../img/symbol-defs.svg#icon-search"></use>
+      </svg>
+    </button>
+  </form>
+
+  <div class="con-select">
+    <div class="con-search">
+      <h2 class="text-search">Search</h2>
+      <div class="con-inp">
+        <input class="inp-search" type="text" name="searchQuery" autocomplete="off" placeholder="Enter Text" />
+        <button type="button" aria-label="btn search" class="btn-search">
+          <svg class="svg-search" width="18" height="18">
+            <use class="svg-search-icon" href="./images/icons/SPRITE.svg#icon-search-3-1"></use>
+          </svg>
+        </button>
+        <button type="button" aria-label="btn cancel" class="btn-cancel">
+          <svg class="svg-cancel" width="18" height="18">
+            <use class="svg-cancel-icon" href="./images/icons/SPRITE.svg#icon-x"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="item-select time">
+      <h2 class="text-search">Time</h2>
+      <div class="custom-select">
+        <div class="selected-option js-for-selected" id="time-toggle">
+          <span class="elem-prev">Select</span>
+          <svg class="search-arrow" width="18" height="18">
+            <use href="./images/icons/SPRITE.svg#search-arrow"></use>
+          </svg>
+        </div>
+        <ul class="options-list" id="timesearch"></ul>
+      </div>
+    </div>
+
+    <div class="item-select">
+      <h2 class="text-search">Area</h2>
+      <div class="custom-select">
+        <div class="selected-option selected-area js-for-selected" id="area-toggle">
+          <span class="elem-prev">Select</span>
+          <svg class="search-arrow" width="18" height="18">
+            <use href="./images/icons/SPRITE.svg#search-arrow"></use>
+          </svg>
+        </div>
+        <ul class="options-list" id="arealist"></ul>
+      </div>
+    </div>
+
+    <div class="item-select ingredients">
+      <h2 class="text-search">Ingredients</h2>
+      <div class="custom-select">
+        <div class="item-ingridienst js-for-selected" id="ingredients-toggle">
+          <span class="elem-prev">Select</span>
+          <svg class="search-arrow" width="18" height="18">
+            <use href="./images/icons/SPRITE.svg#search-arrow"></use>
+          </svg>
+        </div>
+        <ul class="options-list" id="ingredients"></ul>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
           <section class="foods">
     <div class="container">
         <div class="food-container">
