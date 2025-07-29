@@ -4,7 +4,8 @@
     --header-color: #000000;
     --second-header-color: #9BB537;
     --third-header-color : #B4B4B4;
-    --text-color : rgb(5, 5, 5); /*#050505*/
+    --text-color :  #050505;
+    --text-color-rgb : 5, 5, 5; /*#050505*/
     --second-text-color: #F8F8F8;
     --star-color : #EEA10C;
     --switch-color: #F3F3F340;
