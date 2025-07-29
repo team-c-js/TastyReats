@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="/TastyReats/assets/main-B5Qt9EMX.js"></script>
-    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-DLbz46d7.css">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-tryyMyqr.css">
   </head>
   <body>
     <h1>- Header - Gizem Demirci </h1>
@@ -44,14 +44,14 @@
       </div>
     </aside>
           <!--VEDAT BAŞAK-->
-<section class="sidebar-populer">
+<aside class="sidebar-populer">
   <div class="container">
     <h2 class="sidebar-populer-title">POPULAR RECIPES</h2>
     <ul class="recipe-list">
       <li class="recipe-list-item">
         <img
           class="recipe-box-img"
-          src="/src/img/french-omelette.png"
+          src="/TastyReats/assets/french-omelette-CSIuQ9lu.png"
           alt="French Omelette"
         />
         <div class="recipe-box">
@@ -94,7 +94,7 @@
       </li>
     </ul>
   </div>
-</section>
+</aside>
 
         </div>
         <div class="content">
@@ -309,8 +309,32 @@
     </div>
 </section>
         <h1>Raiting popup - Muhammet Ali Koç </h1>
-        <p>Nisa</p>
+        <section class="popup popup-order">
+  <div class="popup-container">
+    <div class="popup-header">
+      <h3 class="popup-title">ORDER NOW</h3>
+      <svg class="popup-svg-close">
+        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-close"></use>
+      </svg>
+    </div>
 
+    <form class="popup-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" class="popup-input" required>
+
+      <label for="phone">Phone number</label>
+      <input type="tel" id="phone" name="phone" placeholder="Your phone number" class="popup-input" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your email" class="popup-input" required>
+
+      <label for="comment">Comment</label>
+      <textarea id="comment" name="comment" placeholder="Your comment" class="popup-textarea"></textarea>
+
+      <button type="submit" class="popup-send-btn">Send</button>
+    </form>
+  </div>
+</section>
 
       </div>
     </main>
