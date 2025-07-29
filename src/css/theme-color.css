@@ -18,3 +18,7 @@
     --header-color : #FFFFFF;
     --text-color : #FFFFFF;
 }
+
+body{
+    font-family: "Inter", sans-serif;
+}
