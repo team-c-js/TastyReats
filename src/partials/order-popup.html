@@ -1,2 +1,26 @@
-<p>Nisa</p>
+<section class="popup popup-order">
+  <div class="popup-container">
+    <div class="popup-header">
+      <h3 class="popup-title">ORDER NOW</h3>
+      <svg class="popup-svg-close">
+        <use href="./img/symbol-defs.svg#icon-close"></use>
+      </svg>
+    </div>
 
+    <form class="popup-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" class="popup-input" required>
+
+      <label for="phone">Phone number</label>
+      <input type="tel" id="phone" name="phone" placeholder="Your phone number" class="popup-input" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your email" class="popup-input" required>
+
+      <label for="comment">Comment</label>
+      <textarea id="comment" name="comment" placeholder="Your comment" class="popup-textarea"></textarea>
+
+      <button type="submit" class="popup-send-btn">Send</button>
+    </form>
+  </div>
+</section>
