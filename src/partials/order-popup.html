@@ -1,5 +1,7 @@
 <section class="popup popup-order">
   <div class="popup-container">
+    
+    <!-- Popup Header -->
     <div class="popup-header">
       <h3 class="popup-title">ORDER NOW</h3>
       <svg class="popup-svg-close">
@@ -7,20 +9,33 @@
       </svg>
     </div>
 
+    <!-- Form -->
     <form class="popup-form">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your name" class="popup-input" required>
 
-      <label for="phone">Phone number</label>
-      <input type="tel" id="phone" name="phone" placeholder="Your phone number" class="popup-input" required>
+      <div class="form-group">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+      </div>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Your email" class="popup-input" required>
+      <div class="form-group">
+        <label for="phone" class="form-label">Phone number</label>
+        <input type="tel" id="phone" name="phone" class="form-input" placeholder="Your phone number" required>
+      </div>
 
-      <label for="comment">Comment</label>
-      <textarea id="comment" name="comment" placeholder="Your comment" class="popup-textarea"></textarea>
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="Your email" required>
+      </div>
 
-      <button type="submit" class="popup-send-btn">Send</button>
+      <div class="form-group">
+        <label for="comment" class="form-label">Comment</label>
+        <textarea id="comment" name="comment" class="form-textarea" placeholder="Your comment"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="popup-send-btn">Send</button>
+      </div>
+
     </form>
   </div>
 </section>
