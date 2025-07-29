@@ -1,0 +1,30 @@
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+/* Common styles */
+@import url('./reset.css');
+@import url('./base.css');
+@import url('./container.css');
+@import url('./animations.css');
+
+/* Sections style */
+@import url('./vite-promo.css');
+@import url('./badges.css');
+@import url('./back-link.css');
+
+/**/
+@import url('./header.css');
+@import url('./hero.css');
+@import url('./sidebar-categories.css');
+@import url('./sidebar-popular.css');
+@import url('./search-form.css');
+@import url('./foods.css');
+@import url('./pagination.css');
+@import url('./popups.css');
+@import url('./favorites-hero.css');
+@import url('./favorites-categoris.css');
+@import url('./favorites-errors.css');
+@import url('./theme-color.css');
