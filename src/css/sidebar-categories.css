@@ -1,3 +1,6 @@
+.sidebar{
+  color: #050505;
+}
 .all-categories-btn{
 border: 1px solid rgba(5, 5, 5, 0.2);
 border-radius: 15px;
@@ -9,5 +12,4 @@ height: 50px;
   list-style-type: none;
   width: 235px;
   height: 416px;
-  margin-left: 100px;
 }
