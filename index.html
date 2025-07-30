@@ -10,12 +10,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="/TastyReats/assets/main-B5Qt9EMX.js"></script>
-    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-DgwOXoWh.css">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-ud_k2XGX.css">
   </head>
   <body>
-    <h1>- Header - Gizem Demirci </h1>
-<p> branch deneme </p>
-<p>deneme-4</p>
+    
+  <header class="header">
+    <div class="container">
+        <nav class="nav-header">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-link home" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link favorites" href="./favorites.html">Favorites</a>
+                </li>
+            </ul>
+            <a class="logo-link" href="./index.html">tasty<span class="logo-color">treats.</span></a>
+            <div class="header-btn-box">
+                <button type="button openModal" id="openModal" class="shopping-link">
+                    <svg class="shopping-icon" width="24" height="24">
+                        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-shopping-cart"></use>
+                    </svg>
+                </button>  
+                <!--Toggle-->                
+                <div class="switcher-js">
+                    <input type="checkbox" class="input-switcher" id="switch"/>
+                    <label class="input-label" for="switch">Toggle</label>
+                </div>
+            </div>
+        </nav>
+    </div>               
+  </header>
 
     <main>
       <h1>Hero - Onur Döker</h1>
@@ -44,6 +69,8 @@
       </div>
     </aside>
           <!--VEDAT BAŞAK-->
+
+<section class="sidebar-populer">
 <aside class="sidebar-populer">
   <div class="container">
     <h2 class="sidebar-populer-title">POPULAR RECIPES</h2>
@@ -51,7 +78,8 @@
       <li class="recipe-list-item">
         <img
           class="recipe-box-img"
-          src="/TastyReats/assets/french-omelette-CSIuQ9lu.png"
+          src="/src/img/french-omelette.png"
+          src="./img/french-omelette.png"
           alt="French Omelette"
         />
         <div class="recipe-box">
@@ -94,7 +122,9 @@
       </li>
     </ul>
   </div>
+</section>
 </aside>
+
 
         </div>
         <div class="content">
@@ -301,6 +331,9 @@
 </section>
           <h1>sayfalama - berkay  torunlar</h1>
         </div>
+        
+      </div>
+      <div class="popup-container">
         <section class="popup popup-food">
     <div class="popup-container">
         <div class="popup-header">
@@ -393,6 +426,8 @@
         <h1>Raiting popup - Muhammet Ali Koç </h1>
         <section class="popup popup-order">
   <div class="popup-container">
+    
+    <!-- Popup Header -->
     <div class="popup-header">
       <h3 class="popup-title">ORDER NOW</h3>
       <svg class="popup-svg-close">
@@ -400,20 +435,33 @@
       </svg>
     </div>
 
+    <!-- Form -->
     <form class="popup-form">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your name" class="popup-input" required>
 
-      <label for="phone">Phone number</label>
-      <input type="tel" id="phone" name="phone" placeholder="Your phone number" class="popup-input" required>
+      <div class="form-group">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+      </div>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Your email" class="popup-input" required>
+      <div class="form-group">
+        <label for="phone" class="form-label">Phone number</label>
+        <input type="tel" id="phone" name="phone" class="form-input" placeholder="Your phone number" required>
+      </div>
 
-      <label for="comment">Comment</label>
-      <textarea id="comment" name="comment" placeholder="Your comment" class="popup-textarea"></textarea>
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="Your email" required>
+      </div>
 
-      <button type="submit" class="popup-send-btn">Send</button>
+      <div class="form-group">
+        <label for="comment" class="form-label">Comment</label>
+        <textarea id="comment" name="comment" class="form-textarea" placeholder="Your comment"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="popup-send-btn">Send</button>
+      </div>
+
     </form>
   </div>
 </section>
