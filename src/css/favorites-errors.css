@@ -1,16 +1,53 @@
 /* VEDAT BAŞAK */
 .favorites-errors {
-}
-
-.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
 }
 
 .favorites-errors-icon {
+  margin-bottom: 24px;
 }
+
 .favorites-errors-svg {
+  width: 70px;
+  height: 70px;
+  display: block;
 }
+
 .favorites-errors-msg {
-  font-size: 18px;
-  color: #333;
-  margin-top: 15px;
+  font-size: 1rem;
+  color: #222;
+  max-width: 340px;
+  line-height: 1.4;
+}
+/* Tablet style */
+@media only screen and (min-width: 768px) {
+  .favorites-errors-svg {
+    width: 56px;
+    height: 56px;
+  }
+  .favorites-errors-msg {
+    font-size: 0.95rem;
+    max-width: 280px;
+  }
+}
+
+/* MOBİLE STYLE */
+
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+  .favorites-errors {
+    min-height: 50vh;
+    padding: 0 8px;
+  }
+  .favorites-errors-svg {
+    width: 44px;
+    height: 44px;
+  }
+  .favorites-errors-msg {
+    font-size: 0.9rem;
+    max-width: 220px;
+  }
 }
