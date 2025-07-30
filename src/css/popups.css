@@ -139,8 +139,36 @@
 
 
 .popup-order{
-    display: none;
+    display: block;
 }
 .popup-order > .popup-container {
 width : 440px; 
 }
+.popup-order-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-row{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.form-row label{
+    color: rgba(var(--text-color-rgb), 0.5);
+}
+.popup-input{
+    border: 1px solid rgba(var(--text-color-rgb),0.2);
+    border-radius: 15px;
+    padding: 14px 18px;
+
+}
+.popup-input:focus{
+    outline: 1px solid var(--btn-bg-color);
+}
+textarea.popup-input{
+    resize: none;
+    height: 100px;
+    margin-bottom: 40px;
+}
+
