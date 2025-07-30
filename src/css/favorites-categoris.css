@@ -12,7 +12,7 @@
 .favorites-btn:hover{
   background-color: var(--btn-bg-color);
   color: var(--btn-text-color);
-  border: none;
+  border: 1px solid var(--btn-bg-color);
 }
 .favorites-list {
   list-style-type: none;
@@ -27,5 +27,4 @@
   height: 418px;
   overflow-y: auto;
   overflow-x: hidden;
-  margin-left: 30px;
 }
