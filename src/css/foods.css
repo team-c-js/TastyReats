@@ -25,6 +25,7 @@
   position: relative;
  
 }
+
 .foodsList-itemImg {
   width: 100%;
   border-radius: 8px;
@@ -49,9 +50,7 @@
   font-size: 12px;
   line-height: 1.125em;
 }
-.raiting-foodContainer {
-   
-}
+
 .raiting-food {
   display: flex;
   gap: 4px;
@@ -62,8 +61,7 @@
 .raiting-foodPoint {
   line-height: 1.125em;
 }
-.raiting-foodStars {
-}
+
 .raiting-foodButton {
   display: flex;
   padding: 8px 16px;
@@ -75,4 +73,11 @@
   height: 31px;
   font-size: 12px;
   line-height: 100%;
+}
+
+.raiting-foodButton:hover{
+  color:var(--text-color);
+}
+ .favorites .foodsList-item{
+  width: calc((100% - 48px) / 4);
 }
