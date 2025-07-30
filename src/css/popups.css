@@ -169,7 +169,7 @@ textarea.popup-input{
 
 
 .popup-raiting{
-    display: block;
+    display: none;
 }
 .popup-raiting > .popup-container{
     width: 424px;
