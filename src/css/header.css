@@ -77,10 +77,7 @@
     inset: 0;
     box-shadow: 0 4px 15px #A09EA099;
     text-indent: -9999px;
-
 }
-
-
 
 .input-label::after {
     content: '';
