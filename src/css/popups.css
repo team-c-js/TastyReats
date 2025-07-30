@@ -139,7 +139,7 @@
 
 
 .popup-order{
-    display: block;
+    display: none;
 }
 .popup-order > .popup-container {
 width : 440px; 
