@@ -7,6 +7,8 @@
     --text-color :  #050505;
     --text-color-rgb : 5, 5, 5; /*#050505*/
     --second-text-color: #F8F8F8;
+    --pagination-bg-color : #050505;
+    --pagination-text-grey-rgb : 248,248,248;
     --star-color : #EEA10C;
     --switch-color: #F3F3F340;
     --switch-bg-color: #A09EA099;
