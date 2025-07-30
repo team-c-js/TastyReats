@@ -1,4 +1,9 @@
 /* VEDAT BAŞAK */
+.sidebar-populer {
+}
+
+.container {
+}
 
 .sidebar-populer .recipe-list {
   list-style: none;
@@ -41,7 +46,6 @@
   color: #666;
   line-height: 1.4;
 }
-
 /* TABLET STYLE */
 @media only screen and (min-width: 768px) {
   .sidebar-populer .recipe-list-item {
@@ -86,4 +90,3 @@
     padding: 0 8px;
   }
 }
-
