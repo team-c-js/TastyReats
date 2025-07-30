@@ -1,3 +1,28 @@
-<h1>- Header - Gizem Demirci </h1>
-<p> branch deneme </p>
-<p>deneme-4</p>
+
+  <header class="header">
+    <div class="container">
+        <nav class="nav-header">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-link home" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link favorites" href="./favorites.html">Favorites</a>
+                </li>
+            </ul>
+            <a class="logo-link" href="./index.html">tasty<span class="logo-color">treats.</span></a>
+            <div class="header-btn-box">
+                <button type="button openModal" id="openModal" class="shopping-link">
+                    <svg class="shopping-icon" width="24" height="24">
+                        <use href="./img/symbol-defs.svg#icon-shopping-cart"></use>
+                    </svg>
+                </button>  
+                <!--Toggle-->                
+                <div class="switcher-js">
+                    <input type="checkbox" class="input-switcher" id="switch"/>
+                    <label class="input-label" for="switch">Toggle</label>
+                </div>
+            </div>
+        </nav>
+    </div>               
+  </header>

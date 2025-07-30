@@ -1,0 +1,78 @@
+
+.food-container {
+  
+  color: var(--second-text-color);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+.foodsList {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.foodList-favorite{
+    position: absolute;
+    padding: 16px;
+    top:18px;
+    right: 18px;
+}
+.foodsList-item {
+  width: calc((100% - 32px) / 3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+ 
+}
+.foodsList-itemImg {
+  width: 100%;
+  border-radius: 8px;
+    display: block;
+}
+.food-content {
+    display: flex;
+    flex-direction: column;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+       gap:16px;
+       padding: 16px;
+}
+.foodContent-title {
+  font-weight: 600;
+
+  line-height: 1.125em;
+}
+.foodContent-text {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.125em;
+}
+.raiting-foodContainer {
+   
+}
+.raiting-food {
+  display: flex;
+  gap: 4px;
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.raiting-foodPoint {
+  line-height: 1.125em;
+}
+.raiting-foodStars {
+}
+.raiting-foodButton {
+  display: flex;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--second-header-color);
+  color: var(--second-text-color);
+  width: 93px;
+  height: 31px;
+  font-size: 12px;
+  line-height: 100%;
+}
