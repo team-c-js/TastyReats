@@ -74,3 +74,10 @@
   font-size: 12px;
   line-height: 100%;
 }
+
+.raiting-foodButton:hover{
+  color:var(--text-color);
+}
+ .favorites .foodsList-item{
+  width: calc((100% - 48px) / 4);
+}
