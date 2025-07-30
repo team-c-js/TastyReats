@@ -13,17 +13,21 @@
     justify-content: space-between;
 }
 
+.nav-list {
+    display: flex;
+}
+
 .logo-link {
     text-align: center;
     font-size: 16px;
     font-weight: 600;
     line-height: 1.12;
     letter-spacing: -0.64px;
-    color: var(--accent);
+    color: #9BB537;
 }
 
 .logo-color {
-    color: var(--txt-color);
+    color: #050505;
 }
 
 .header-btn-box {
@@ -43,14 +47,13 @@
 }
 
 .shopping-icon {
-    fill: var(--txt-color);
+    fill: #050505 ;
 }
 
 .shopping-icon:hover,
 .shopping-icon:focus {
-    fill: var(--accent);
+    fill: #9BB537;
 }
-
 
 .input-switcher[type='checkbox'] {
     height: 0;
@@ -64,10 +67,25 @@
     text-indent: -9999px;
     width: 46px;
     height: 20px;
-    background: #cecdcd;
+    background-color: #F3F3F340;
     display: block;
     border-radius: 18px;
-    position: relative;
+    position: absolute;
+    inset: 0;
+    box-shadow: #A09EA099;
+}
+
+.input-label:before {
+    content: "";
+    position: absolute;
+    height: 34px;
+    width: 34px;
+    left: 3px;
+    top: 3px;
+    background-color: #F8F8F8;
+    border-radius: 50%;
+    transition: 0.4s;
+    border: 2px solid #c2c2c2;
 }
 
 .input-label:after {
@@ -103,3 +121,13 @@
     font-size: 12px;
     line-height: 1.25;
 }
+
+.nav-link-home {
+    color: #9BB537;
+}
+
+.nav-link-favorites {
+    color: #050505;
+}
+
+
