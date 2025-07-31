@@ -10,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="/TastyReats/assets/main-B5Qt9EMX.js"></script>
-    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-rqj85c_1.css">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-D0eg-IoN.css">
   </head>
   <body>
     
   <header class="header">
     <div class="container">
         <nav class="nav-header">
-            <ul class="nav-list">
+            <ul class="nav-list" id="mobile-menu">
                 <li class="nav-item">
                     <a class="nav-link-home" href="./index.html">Home</a>
                 </li>
@@ -36,11 +36,52 @@
                 <div class="theme-switcher-js">
                     <input type="checkbox" class="input-switcher" id="switch"/>
                     <label class="input-label" for="switch">Toggle</label>
-                </div>                
+                </div>     
+                <!--Hamburger menu-->        
+                <button class="burger-menu" type="button" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="burger-menu-icon" width="32" height="32">
+                        <use href="/TastyReats/assets/hamburger_menu-a9zm1sYJ.svg#icon-hamburger_menu"></use>
+                    </svg>
+                </button>
             </div>
         </nav>
     </div>               
   </header>
+  
+  <script>
+    const burgerBtn = document.querySelector('.burger-menu');
+    const navList = document.querySelector('.nav-list');
+    const themeToggle = document.getElementById('switch');
+
+    // Burger menu aç/kapat //
+    burgerBtn.addEventListener('click', () => {
+        const isExpanded = burgerBtn.getAttribute('aria-expanded') === 'true';
+        burgerBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+        navList.classList.toggle('show');
+    });
+
+    // Tema toggle //
+    themeToggle.addEventListener('change', () => {
+        if (themeToggle.checked) {
+            document.body.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.classList.remove('dark-theme');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
+    // Sayfa yüklendiğinde tema durumunu yükle //
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeToggle.checked = true;
+        }
+    });
+ </script>
+
+  
 
     <main class="homepage">
       <section class="section-hero">
