@@ -1,6 +1,5 @@
 /* PC Settings */
 .section-hero {
-
 }
 
 .hero-container {
@@ -27,7 +26,7 @@
 .hero-title > .hero-title-span {
   font-weight: 400;
   font-style: italic;
-  color: #9BB537
+  color: var(--second-header-color)
 }
 
 .hero-text {
@@ -44,7 +43,7 @@
   gap: 10px;
 
   border-radius: 15px;
-  border: 1px solid #9BB537;
+  border: 1px solid var(--switch-active-color);
   background-color: transparent;
   transition: all 300ms ease;
 
@@ -56,7 +55,7 @@
 }
 
 .hero-order-btn:hover {
-  background-color: #9BB537;
+  background-color: var(--btn-bg-color);
   color: var(--second-text-color)
 }
 
@@ -64,6 +63,81 @@
   border: 1px solid #9BB537;
   width: 871px;
   height: 468px;
+}
+
+.slide {
+  display: flex;
+  gap: 16px;
+}
+
+.cooker-card {
+  width: 137px;
+  height: 442px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+}
+
+.main-card {
+  width: 351px;
+  height: 442px;
+  border-radius: 15px;
+  background-color: var(--pagination-bg-color);
+  border: 1px solid var(--pagination-bg-color);
+}
+
+.card-preview {
+  width: 304px;
+  height: 271px;
+  background-size: cover;
+  background-position: center;
+  margin: 67px 23px 32px;
+}
+
+.card-title {
+  width: 278px;
+  color: rgba(248, 248, 248, 0.6);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 auto;
+
+}
+
+.card-nation {
+  width: 48px;
+  color: #F8F8F833;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 8px;
+}
+
+.card {
+  height: 442px;
+  width: 182px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: 10%;
+  /*background-repeat: no-repeat;*/
+}
+
+.cooker-henson {
+  background-image: url('https://tasty-treats-backend.p.goit.global/HestonChan.webp');
+}
+
+.barbecue-preview {
+  background-image: url('https://tasty-treats-backend.p.goit.global/previewDish1.webp');
+}
+
+.barbecue-imageDish {
+  background-image: url('https://tasty-treats-backend.p.goit.global/imgDish1.webp');
 }
 
 /* Table Settings */
@@ -103,5 +177,51 @@
     padding: 10px 20px;
 
     border-radius: 12px;
+  }
+
+  .cooker-card {
+    width: 80px;
+    height: 280px;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    gap: 8px;
+  }
+
+  .main-card {
+    width: 200px;
+    height: 280px;
+  }
+
+  .card-preview {
+    width: 157px;
+    height: 142px;
+    margin: 56px auto 20px;
+  }
+
+  .card-title {
+    width: 157px;
+    font-size: 10px;
+    line-height: 14px;
+    margin: 0 auto;
+  }
+
+  .card-nation {
+    width: 30px;
+    font-size: 8px;
+    line-height: 12px;
+  }
+
+  .card {
+    block-size: 280px;
+    inline-size: 200px;
+    border-radius: 15px;
+    background-size: 564px;
+    background-position: 30%;
+    background-color: white;
+  }
+
+  .barbecue-imageDish {
+
   }
 }
