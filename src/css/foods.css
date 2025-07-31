@@ -1,6 +1,4 @@
-
 .food-container {
-  
   color: var(--second-text-color);
   font-family: 'Inter', sans-serif;
   font-size: 14px;
@@ -11,11 +9,11 @@
   gap: 16px;
   flex-wrap: wrap;
 }
-.foodList-favorite{
-    position: absolute;
-    padding: 16px;
-    top:18px;
-    right: 18px;
+.foodList-favorite {
+  position: absolute;
+  padding: 16px;
+  top: 18px;
+  right: 18px;
 }
 .foodsList-item {
   width: calc((100% - 32px) / 3);
@@ -23,26 +21,23 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
- 
 }
-
 .foodsList-itemImg {
   width: 100%;
   border-radius: 8px;
-    display: block;
+  display: block;
 }
 .food-content {
-    display: flex;
-    flex-direction: column;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-       gap:16px;
-       padding: 16px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  gap: 16px;
+  padding: 16px;
 }
 .foodContent-title {
   font-weight: 600;
-
   line-height: 1.125em;
 }
 .foodContent-text {
@@ -50,20 +45,19 @@
   font-size: 12px;
   line-height: 1.125em;
 }
-
 .raiting-food {
   display: flex;
   gap: 4px;
-      display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .raiting-foodPoint {
   line-height: 1.125em;
 }
-
 .raiting-foodButton {
   display: flex;
+  align-items: center;
   padding: 8px 16px;
   border-radius: 8px;
   border: none;
@@ -74,10 +68,25 @@
   font-size: 12px;
   line-height: 100%;
 }
-
-.raiting-foodButton:hover{
-  color:var(--text-color);
+.raiting-foodButton:hover {
+  color: var(--text-color);
 }
- .favorites .foodsList-item{
+.favorites .foodsList-item {
   width: calc((100% - 48px) / 4);
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .foodsList-item {
+    width: calc((100% - 64px) / 2);
+  }
+  .favorites .foodsList-item {
+    width: calc((100% - 32px) / 3);
+  }
+}
+@media screen and (min-width: 350px) and (max-width: 767px) {
+  .foodsList-item {
+    width: 100%;
+  }
+  .favorites .foodsList-item {
+    width: 100%;
+  }
 }

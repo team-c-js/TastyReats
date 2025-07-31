@@ -1,13 +1,13 @@
 /* PC Settings */
 .section-hero {
-
 }
 
 .hero-container {
   display: flex;
   justify-content: space-between;
   gap: 32px;
-  margin-top: 100px; /* Gizemin kontaynersina gore tekrardan ayarlanacak */
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .hero-left-container {
@@ -27,7 +27,7 @@
 .hero-title > .hero-title-span {
   font-weight: 400;
   font-style: italic;
-  color: #9BB537
+  color: var(--second-header-color)
 }
 
 .hero-text {
@@ -44,7 +44,7 @@
   gap: 10px;
 
   border-radius: 15px;
-  border: 1px solid #9BB537;
+  border: 1px solid var(--switch-active-color);
   background-color: transparent;
   transition: all 300ms ease;
 
@@ -53,26 +53,142 @@
   line-height: 1;
   letter-spacing: 0;
   color: var(--text-color);
+  cursor: pointer;
 }
 
 .hero-order-btn:hover {
-  background-color: #9BB537;
-  color: var(--second-text-color)
+  background-color: var(--btn-bg-color);
+  color: var(--second-text-color);
 }
 
 .hero-right-container {
   border: 1px solid #9BB537;
-  width: 871px;
+  width: 702px;
   height: 468px;
+  overflow: hidden;
+}
+
+.slider-list {
+  display: flex;
+  overflow-x: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.slider-list-item {
+  margin-right: 16px;
+}
+
+.slide {
+  display: inline-flex;
+  gap: 16px;
+}
+
+.cooker-card {
+  width: 137px;
+  height: 442px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+}
+
+.main-card {
+  width: 351px;
+  height: 442px;
+  border-radius: 15px;
+  background-color: var(--pagination-bg-color);
+  border: 1px solid #9BB5374D;
+}
+
+.card-preview {
+  width: 304px;
+  height: 271px;
+  background-size: cover;
+  background-position: center;
+  margin: 67px 23px 32px;
+}
+
+.card-title {
+  width: 278px;
+  color: rgba(248, 248, 248, 0.6);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 auto;
+
+}
+
+.card-nation {
+  width: 48px;
+  color: #F8F8F833;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 8px;
+}
+
+.card {
+  height: 442px;
+  width: 351px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: 15%;
+}
+
+.cooker-henson {
+  background-image: url('https://tasty-treats-backend.p.goit.global/HestonChan.webp');
+}
+
+.cooker-ana {
+  background-image: url('https://tasty-treats-backend.p.goit.global/AnaSmyth.webp');
+}
+
+.cooker-ferran {
+  background-image: url('https://tasty-treats-backend.p.goit.global/FerranMeyer.webp');
+}
+
+.barbecue-preview {
+  background-image: url('https://tasty-treats-backend.p.goit.global/previewDish1.webp');
+}
+
+.pizza-preview {
+  background-image: url('https://tasty-treats-backend.p.goit.global/previewDish2.webp');
+}
+
+.pancake-preview {
+  background-image: url('https://tasty-treats-backend.p.goit.global/previewDish3.webp');
+}
+
+.barbecue-imageDish {
+  background-image: url('https://tasty-treats-backend.p.goit.global/imgDish1.webp');
+}
+
+.pizza-imageDish {
+  background-image: url('https://tasty-treats-backend.p.goit.global/imgDish2.webp');
+}
+
+.pancake-imageDish {
+  background-image: url('https://tasty-treats-backend.p.goit.global/imgDish3.webp');
 }
 
 /* Table Settings */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1279px) {
   .hero-container {
     display: grid;
-    justify-content: left;
+    justify-content: center;
     gap: 64px;
-    margin-top: 95px; /* Gizemin kontaynersina gore tekrardan ayarlanacak */
+    margin-top: 95px;
+    margin-bottom: 80px;
+  }
+
+  .hero-right-container {
+    width: 736px;
   }
 }
 
@@ -80,9 +196,10 @@
 @media screen and (max-width: 768px) {
   .hero-container {
     display: grid;
-    justify-content: left;
+    justify-content: center;
     gap: 48px;
-    margin-top: 89px; /* Gizemin kontaynersina gore tekrardan ayarlanacak */
+    margin-top: 89px;
+    margin-bottom: 80px;
   }
 
   .hero-left-container {
@@ -104,4 +221,51 @@
 
     border-radius: 12px;
   }
+
+  .hero-right-container {
+    width: 356px;
+    height: 302px;
+  }
+
+  .cooker-card {
+    width: 80px;
+    height: 280px;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    gap: 8px;
+  }
+
+  .main-card {
+    width: 200px;
+    height: 280px;
+  }
+
+  .card-preview {
+    width: 157px;
+    height: 142px;
+    margin: 56px auto 20px;
+  }
+
+  .card-title {
+    width: 157px;
+    font-size: 10px;
+    line-height: 14px;
+    margin: 0 auto;
+  }
+
+  .card-nation {
+    width: 30px;
+    font-size: 8px;
+    line-height: 12px;
+  }
+
+  .card {
+    height: 280px;
+    width: 200px;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: 30%;
+  }
+
 }
