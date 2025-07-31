@@ -7,7 +7,6 @@
   height: 48px;
   padding: 15px;
   white-space: nowrap;
-
 }
 .favorites-btn:hover{
   background-color: var(--btn-bg-color);
@@ -28,5 +27,4 @@
   height: 418px;
   overflow-y: auto;
   overflow-x: hidden;
-  
-}
+  }
