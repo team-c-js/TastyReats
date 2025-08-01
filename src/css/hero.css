@@ -1,7 +1,4 @@
 /* PC Settings */
-.section-hero {
-}
-
 .hero-container {
   display: flex;
   justify-content: space-between;
@@ -62,24 +59,21 @@
 }
 
 .hero-right-container {
-  border: 1px solid #9BB537;
   width: 702px;
-  height: 468px;
+}
+
+.swiper {
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  list-style: none;
+  display: block;
+  position: relative;
   overflow: hidden;
 }
 
-.slider-list {
-  display: flex;
-  overflow-x: auto;
-  padding: 0;
-  margin: 0;
-}
-
-.slider-list-item {
-  margin-right: 16px;
-}
-
-.slide {
+.slider-card {
   display: inline-flex;
   gap: 16px;
 }
@@ -90,6 +84,7 @@
   border-radius: 15px;
   background-size: cover;
   background-position: center;
+  display: block;
 }
 
 .main-card {
@@ -98,6 +93,9 @@
   border-radius: 15px;
   background-color: var(--pagination-bg-color);
   border: 1px solid #9BB5374D;
+  background-image: url(./../img/hero-background.png);
+  background-size: 110%;
+  background-position: center;
 }
 
 .card-preview {
@@ -118,7 +116,6 @@
   text-align: center;
   text-transform: uppercase;
   margin: 0 auto;
-
 }
 
 .card-nation {
@@ -137,44 +134,30 @@
   height: 442px;
   width: 351px;
   border-radius: 15px;
-  background-size: cover;
-  background-position: 15%;
+  background-size: 663px;
+  background-position: 45%;
+  background-color: var(--pagination-bg-color);
+  display: block;
 }
 
-.cooker-henson {
-  background-image: url('https://tasty-treats-backend.p.goit.global/HestonChan.webp');
+.swiper-slide-prev {
+  overflow: hidden
 }
 
-.cooker-ana {
-  background-image: url('https://tasty-treats-backend.p.goit.global/AnaSmyth.webp');
+.slider-pagination {
+  display: flex;
+  justify-content: center;
+  margin: 22px auto;
 }
 
-.cooker-ferran {
-  background-image: url('https://tasty-treats-backend.p.goit.global/FerranMeyer.webp');
+span.swiper-pagination-bullet {
+  opacity: 1;
+  background-color: var(--text-color);
 }
 
-.barbecue-preview {
-  background-image: url('https://tasty-treats-backend.p.goit.global/previewDish1.webp');
-}
-
-.pizza-preview {
-  background-image: url('https://tasty-treats-backend.p.goit.global/previewDish2.webp');
-}
-
-.pancake-preview {
-  background-image: url('https://tasty-treats-backend.p.goit.global/previewDish3.webp');
-}
-
-.barbecue-imageDish {
-  background-image: url('https://tasty-treats-backend.p.goit.global/imgDish1.webp');
-}
-
-.pizza-imageDish {
-  background-image: url('https://tasty-treats-backend.p.goit.global/imgDish2.webp');
-}
-
-.pancake-imageDish {
-  background-image: url('https://tasty-treats-backend.p.goit.global/imgDish3.webp');
+span.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: var(--second-header-color);
 }
 
 /* Table Settings */
@@ -189,6 +172,10 @@
 
   .hero-right-container {
     width: 736px;
+  }
+
+  .card {
+    background-position: 65%;
   }
 }
 
@@ -224,15 +211,12 @@
 
   .hero-right-container {
     width: 356px;
-    height: 302px;
+    /*height: 302px;*/
   }
 
   .cooker-card {
     width: 80px;
     height: 280px;
-    border-radius: 15px;
-    background-size: cover;
-    background-position: center;
     gap: 8px;
   }
 
@@ -264,8 +248,8 @@
     height: 280px;
     width: 200px;
     border-radius: 15px;
-    background-size: cover;
-    background-position: 30%;
+    background-size: 500px;
+    background-position: 65%;
   }
 
 }
