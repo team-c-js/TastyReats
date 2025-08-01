@@ -33,7 +33,6 @@ function events () {
 events ();
 
 function markUp (data) {
-  console.log (data);
   const CardMarkup = data => {
     const {
       cook,
