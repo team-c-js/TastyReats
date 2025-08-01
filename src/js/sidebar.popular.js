@@ -7,15 +7,28 @@ const API_CONFIG = {
   },
 };
 
-axios.defaults.baseURL = API_CONFIG.BASE_URL;
+const handleError = (error, context = '') => {
+  console.error(`[${context}] Hata:`, error);
+
+  const errorContainer = document.querySelector('.error-message');
+  if (errorContainer) {
+    errorContainer.textContent = `Veri yüklenirken hata oluştu: ${error.message}`;
+    errorContainer.style.display = 'block';
+  }
+
+  return null;
+};
 
 const PopularRecipesAPI = {
-  async getPopularRecipes(params = {}) {
-    const response = await axios.get(
-      `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.POPULAR}`
-    );
-
-    return response.data;
+  async getPopularRecipes() {
+    try {
+      const response = await axios.get(
+        `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.POPULAR}`
+      );
+      return response.data;
+    } catch (error) {
+      return handleError(error, 'getPopularRecipes');
+    }
   },
 };
 
@@ -25,25 +38,43 @@ const PopularRecipesUI = {
     PopularRecipesList.innerHTML = '';
 
     recipes.forEach(recipe => {
-      const recipeList = document.createElement('recipeList');
+      const recipeList = document.createElement('li');
       recipeList.classList.add('recipe-list-item');
-      recipeList.setAttribute('data-recipe_name', recipe._id);
-      recipeList.id = `recipe_item-${recipe._id}`;
+      recipeList.dataset.id = recipe._id;
 
       recipeList.innerHTML = `
-        <h3>${recipe.title}</h3>
-        <p>${recipe.description?.slice(0, 100)}...</p>
+        <img class="recipe-box-img" src="${recipe.preview}" alt="${
+        recipe.title
+      }" />
+        <div class="recipe-box">
+          <h3 class="recipe-box-title">${recipe.title}</h3>
+          <p class="recipe-box-text">${recipe.description?.slice(0, 100)}...</p>
+        </div>
       `;
 
       PopularRecipesList.appendChild(recipeList);
     });
+    PopularRecipesList.addEventListener('click', event => {
+      const onClickList = event.target.closest('.recipe-list-item');
+      if (!onClickList) return;
+
+      const recipeListName = onClickList.getAttribute('data-recipe_name');
+      console.log('Tıklanan data-recipe_name:', recipeListName);
+    });
   },
 };
 
-PopularRecipesList.addEventListener('click', event => {
-  const onClickList = event.target.closest('.recipe-list-item');
-  if (!onClickList) return;
+const PopularRecipesApp = {
+  async init() {
+    try {
+      const popular = await ApiService.getPopularRecipes();
+      if (popular) {
+        PopularRecipesUI.displayPopularRecipes(popular);
+      }
+    } catch (error) {
+      console.error('Uygulama başlatılırken bir hata oluştu:', error);
+    }
+  },
+};
 
-  const recipeListName = onClickList.getAttribute('data-recipe_name');
-  console.log('Tıklanan data-recipe_name:', recipeListName);
-});
+document.addEventListener('DOMContentLoaded', () => PopularRecipesApp.init());
