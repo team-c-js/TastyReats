@@ -135,7 +135,7 @@
 
 
 .popup-order{
-    display: none;
+    display: block;
 }
 .popup-order > .popup-container {
 width : 440px; 
@@ -166,8 +166,6 @@ textarea.popup-input{
     height: 100px;
     margin-bottom: 40px;
 }
-
-
 .popup-raiting{
     display: none;
 }
@@ -187,3 +185,4 @@ textarea.popup-input{
     color: var(--text-color);
     margin-bottom: 32px;
 }
+

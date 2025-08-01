@@ -26,6 +26,21 @@
   flex-direction: row;
   gap: 64px;
 }
+
+.sidebar{
+  width: 235px;
+}
+.content{
+  width: 782px;
+.container{
+  max-width: 1080px;
+  margin : 0 auto;
+}
+.homepage > .container{
+  display:flex;
+  flex-direction: row;
+  gap: 64px;
+}
 .sidebar{
   width: 235px;
 }
