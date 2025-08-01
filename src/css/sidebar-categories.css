@@ -10,6 +10,9 @@
 .category-btn:hover {
   color: var(--btn-bg-color);
 }
+.category-btn.active {
+  color: var(--btn-bg-color);
+}
 .all-categories-btn {
   border: 1px solid var(--switch-bg-color);
   color: var(--switch-bg-color);
