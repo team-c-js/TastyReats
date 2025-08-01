@@ -9,8 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/TastyReats/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
-    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-B95E5kby.css">
+    <script type="module" crossorigin src="/TastyReats/index.js"></script>
+    <link rel="modulepreload" crossorigin href="/TastyReats/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="/TastyReats/assets/vendor-BkCUij8E.js">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-DIZncAsO.css">
   </head>
   <body>
     
@@ -153,21 +155,7 @@
     <button class="all-categories-btn">All categories</button>
     <div class="categories-container">
       <ul class="categories-list">
-        <li><button class="category-btn">Beef</button></li>
-        <li><button class="category-btn">Breakfast</button></li>
-        <li><button class="category-btn">Chicken</button></li>
-        <li><button class="category-btn">Dessert</button></li>
-        <li><button class="category-btn">Goat</button></li>
-        <li><button class="category-btn">Lamb</button></li>
-        <li><button class="category-btn">Miscellaneous</button></li>
-        <li><button class="category-btn">Pasta</button></li>
-        <li><button class="category-btn">Pork</button></li>
-        <li><button class="category-btn">Seafood</button></li>
-        <li><button class="category-btn">Side</button></li>
-        <li><button class="category-btn">Soup</button></li>
-        <li><button class="category-btn">Starter</button></li>
-        <li><button class="category-btn">Vegan</button></li>
-        <li><button class="category-btn">Vegetarian</button></li>
+        
       </ul>
     </div>
   </div>
@@ -228,89 +216,46 @@
 
         </div>
         <div class="content">
-          <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Search Form</title>
-  <link rel="stylesheet" href="../css/search-form.css" />
-</head>
-<body>
-  <form class="search-form">
-    <input
-      class="search-input"
-      type="text"
-      name="query"
-      placeholder="Search for recipes..."
-    />
-    <button class="search-btn" type="submit" aria-label="search">
-      <svg class="search-icon" width="18" height="18">
-        <use href="../img/symbol-defs.svg#icon-search"></use>
-      </svg>
-    </button>
-  </form>
-
-  <div class="con-select">
-    <div class="con-search">
-      <h2 class="text-search">Search</h2>
-      <div class="con-inp">
-        <input class="inp-search" type="text" name="searchQuery" autocomplete="off" placeholder="Enter Text" />
-        <button type="button" aria-label="btn search" class="btn-search">
-          <svg class="svg-search" width="18" height="18">
-            <use class="svg-search-icon" href="./images/icons/SPRITE.svg#icon-search-3-1"></use>
-          </svg>
-        </button>
-        <button type="button" aria-label="btn cancel" class="btn-cancel">
-          <svg class="svg-cancel" width="18" height="18">
-            <use class="svg-cancel-icon" href="./images/icons/SPRITE.svg#icon-x"></use>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="item-select time">
-      <h2 class="text-search">Time</h2>
-      <div class="custom-select">
-        <div class="selected-option js-for-selected" id="time-toggle">
-          <span class="elem-prev">Select</span>
-          <svg class="search-arrow" width="18" height="18">
-            <use href="./images/icons/SPRITE.svg#search-arrow"></use>
-          </svg>
-        </div>
-        <ul class="options-list" id="timesearch"></ul>
-      </div>
-    </div>
-
-    <div class="item-select">
-      <h2 class="text-search">Area</h2>
-      <div class="custom-select">
-        <div class="selected-option selected-area js-for-selected" id="area-toggle">
-          <span class="elem-prev">Select</span>
-          <svg class="search-arrow" width="18" height="18">
-            <use href="./images/icons/SPRITE.svg#search-arrow"></use>
-          </svg>
-        </div>
-        <ul class="options-list" id="arealist"></ul>
-      </div>
-    </div>
-
-    <div class="item-select ingredients">
-      <h2 class="text-search">Ingredients</h2>
-      <div class="custom-select">
-        <div class="item-ingridienst js-for-selected" id="ingredients-toggle">
-          <span class="elem-prev">Select</span>
-          <svg class="search-arrow" width="18" height="18">
-            <use href="./images/icons/SPRITE.svg#search-arrow"></use>
-          </svg>
-        </div>
-        <ul class="options-list" id="ingredients"></ul>
-      </div>
+          <form action="" class="search-form">
+  <div class="form-group group-text">
+    <label for="search-input-text">Search</label>
+    <div class="search-text">
+      <input type="text" name="search-text" id="search-input-text" placeholder="Enter Text" class="search-input">
+      <i class="fa fa-search" aria-hidden="true"></i>
     </div>
   </div>
+  
+  <div class="form-group group-time">
+    <label for="search-time">Time</label>
+    <select name="search-time" id="search-time" class="search-input">
+      <option value="10min">10min</option>
+      <option value="20min">20min</option>
+      <option value="30min">30min</option>
+      <option value="40min">40min</option>
+    </select>
+  </div>
+  
+  <div class="form-group group-area">
+    <label for="search-area">Area</label>
+    <select name="search-area" id="search-area" class="search-input">
+      <option value="italian">Italian</option>
+      <option value="french">French</option>
+      <option value="english">English</option>
+      <option value="ukrainian">Ukrainian</option>
+    </select>
+  </div>
 
-</body>
-</html>
+  <div class="form-group group-ingredients">
+    <label for="search-ingredients">Ingredients</label>
+    <select name="search-ingredients" id="search-ingredients" class="search-input">
+      <option value="cabbage">Cabbage</option>
+      <option value="tomato">Tomato</option>
+      <option value="onion">Onion</option>
+      </select>
+  </div>
+</form>
 
+<a href="#" class="form-reset">Reset the Filter</a>
           <section class="foods">
     <div class="container">
         <div class="food-container">
@@ -562,7 +507,40 @@
         </div>
     </div>
 </section>
-          <h1>sayfalama - berkay  torunlar</h1>
+          <section class="pagination">
+    <div class="container">
+        <div class="pagination-left">
+            <a href="" class="pagination-btn pagination-btn-black">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </a>
+        <a href="" class="pagination-btn pagination-btn-black">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </a>
+        </div>
+        <a href="" class="pagination-btn active">
+            1
+        </a>
+        <a href="" class="pagination-btn">
+            2
+        </a>
+        <a href="" class="pagination-btn">
+            3
+        </a>
+        <a href="" class="pagination-btn">
+            ...
+        </a>
+        <div class="pagination-right">
+            <a href="" class="pagination-btn pagination-btn-green">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </a>
+        <a href="" class="pagination-btn pagination-btn-green">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </a>
+        </div>
+    </div>
+</section>
         </div>
         
       </div>
@@ -678,8 +656,13 @@
         <section class="popup popup-order">
     <div class="popup-container">
         <div class="popup-header">
+            <svg class="popup-svg-close">
+                <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-close"></use>
+            </svg>
+        </div>
             <i class="fa fa-times popup-close" aria-hidden="true"></i>
         </div>
+
         <div class="popup-content">
             <h3 class="popup-title">ORDER NOW</h3>
             <form action="" class="popup-order-form">
@@ -704,10 +687,12 @@
         </div>
     </div>
 </section>
+</section>
 
 
       </div>
     </main>
+    
 
   </body>
 </html>
