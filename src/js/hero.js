@@ -22,7 +22,7 @@ function events () {
         },
 
         autoplay: {
-          delay: 50000,
+          delay: 5000,
         },
 
         loop: true,
