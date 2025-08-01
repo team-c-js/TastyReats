@@ -21,6 +21,7 @@ const handleError = (error, context = '') => {
 };
 
 
+
 const ApiService = {
   async getAllCategories() {
     try {
@@ -76,7 +77,7 @@ const UIManager = {
 };
 
 
-const App = {
+const sidebarCategoriesApp = {
   async init() {
     try {
       const categories = await ApiService.getAllCategories();
@@ -92,4 +93,4 @@ const App = {
 };
 
 
-document.addEventListener('DOMContentLoaded', () => App.init());
+document.addEventListener('DOMContentLoaded', () => sidebarCategoriesApp.init());
