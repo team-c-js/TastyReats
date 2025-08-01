@@ -49,7 +49,7 @@
 }
 
 .shopping-icon {
-    fill: #050505 ;
+    fill: #050505;
 }
 
 .shopping-icon:hover,
@@ -61,7 +61,7 @@
     height: 0;
     width: 0;
     display: none;
-    
+
 }
 
 .input-label {
@@ -89,16 +89,16 @@
     background-color: #F8F8F8;
     border-radius: 18px;
     transition: all 300ms;
-    border: 1px solid  #bbb;
+    border: 1px solid #bbb;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.input-switcher:checked + .input-label {
+.input-switcher:checked+.input-label {
     background: #9bb537;
     transition: all 300ms;
 }
 
-.input-switcher:checked + .input-label::after {
+.input-switcher:checked+.input-label::after {
     transition: all 300ms;
     left: calc(100% - 19px);
     transform: translateX(0);
@@ -110,18 +110,17 @@
 }
 
 
-.nav-link {
-   
-    font-size: 12px;
-    line-height: 1.25;
+.nav-link-favorites {
+    color: #050505;
 }
 
-.nav-link-home {
+.nav-link-home.current,
+.nav-link-favorites.current {
     color: #9BB537;
 }
 
-.nav-link-favorites {
-    color: #050505;
+.nav-link-favorites:hover {
+    color: #9BB537;
 }
 
 .theme-switcher-js {
@@ -158,100 +157,96 @@
     left: 20px;
 }
 
-/* Karanlık tema */
+#mobile-menu {
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: white;
+}
+
+#mobile-menu.open {
+    transform: translateX(0);
+    opacity: 1;
+}
+
 body.dark-theme {
     background-color: #1e1e1e;
     color: #f8f8f8;
 }
 
-body.dark-theme .header {
+body.dark-theme.header {
     background-color: #1E1E1E;
 }
 
-body.dark-theme .nav-link,
-body.dark-theme .logo-color {
+body.dark-theme.nav-link-home {
     color: #f8f8f8;
 }
 
-body.dark-theme .nav-list {
+body.dark-theme.logo-color {
+    color: #f8f8f8;
+}
+
+body.dark-theme.nav-list {
     background-color: #1E1E1E;
 }
 
-body.dark-theme .shopping-icon,
-body.dark-theme .burger-menu-icon {
+body.dark-theme.shopping-icon {
     fill: #f8f8f8;
 }
 
-body.dark-theme .input-label {
+body.dark-theme.burger-menu-icon {
+    fill: #f8f8f8;
+}
+
+body.dark-theme.input-label {
     background-color: #666;
 }
 
-body.dark-theme .input-label::after {
+body.dark-theme.input-label::after {
     background-color: #ccc;
 }
-.mobile-menu {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
 
-.mobile-menu .nav-link {
-    display: block;
-    padding: 0 50px 16px 50px;
-    color: #F8F8F8;
-    text-decoration: none;
-    text-align: center;
-}
 
-.nav-link {
-    color: #050505;
-    font-size: 12px;
-    line-height: 1.25;
-}
 
-.mobile-menu .current-mob {
-    color: #050505;
-}
 
-/* Media Screen */
 @media screen and (min-width: 375px) {
 
     .logo-link {
         padding: 10px 0;
     }
+    
 }
 
 @media screen and (max-width: 767px) {
     .nav-list {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background-color: white;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        padding: 15px 20px;
-        border-radius: 8px;
-        z-index: 99;
-    }
-
+        display: none;        
+    }   
     .switcher-js {
         display: none;
     }
     .nav-list.show {
-            display: flex;
+        display: flex;
     }
-    
     .burger-menu {
-            display: flex;
+        display: flex;
+        fill: #050505;
+        left: 323px;
     }
-    
     .theme-switcher-js {
-            display: none;
+        display: none;
+    }
+    .logo-color {
+        color: #050505;        
+    }
+    .logo-link {
+        margin-left: 20px;
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
     .burger-menu {
         display: none;
     }
@@ -264,8 +259,6 @@ body.dark-theme .input-label::after {
         display: flex;
         align-items: center;
         gap: 18px;
-        
-        
     }
 
     .nav-list {
@@ -278,12 +271,12 @@ body.dark-theme .input-label::after {
         padding: 0;
     }
 
-    .theme-switcher-js {
-        display: block;
+    .nav-link-favorites, .nav-link-home {
+        padding: 15px 0;
     }
 
-    .nav-link {
-        padding: 15px 0;
+    .theme-switcher-js {
+        display: block;
     }
 
     .current {
@@ -311,7 +304,8 @@ body.dark-theme .input-label::after {
         padding: 20px 0;
     }
 
-    .nav-link {
+    .nav-link-favorites, .nav-link-home {
         padding: 20px 0;
-    }
+    }    
+       
 }
