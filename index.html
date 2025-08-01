@@ -11,14 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="/TastyReats/index.js"></script>
     <link rel="modulepreload" crossorigin href="/TastyReats/assets/modulepreload-polyfill-B5Qt9EMX.js">
-    <link rel="modulepreload" crossorigin href="/TastyReats/assets/vendor-BkCUij8E.js">
-    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-DZglwo-5.css">
+    <link rel="modulepreload" crossorigin href="/TastyReats/assets/vendor-D-mUFdd8.js">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/vendor-BZ_WhpHG.css">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-b6JyxVrC.css">
   </head>
   <body>
     <header class="header">
     <div class="container">
         <nav class="nav-header">
-            <ul class="nav-list" id="mobile-menu">
+            <ul class="nav-list">
                 <li class="nav-item">
                     <a class="nav-link-home current" href="./index.html">Home</a>
                 </li>
@@ -34,52 +35,33 @@
                     </svg>
                 </button>
                 <!--Toggle-->
-                <div class="theme-switcher-js">
+                <div class="theme-switcher-js" id="lage-switcher">
                     <input type="checkbox" class="input-switcher" id="switch" />
                     <label class="input-label" for="switch">Toggle</label>
                 </div>
                 <!--Hamburger menu-->
-                <button class="burger-menu" type="button" aria-expanded="false" aria-controls="mobile-menu">
-                    <svg class="burger-menu-icon" width="32" height="32">
-                        <use href="/TastyReats/assets/hamburger_menu-a9zm1sYJ.svg#icon-hamburger_menu"></use>
-                    </svg>
+                <button class="burger-menu" type="button" id='denem' aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="fa fa-bars" id="burger-menu-icon" aria-hidden="true"></i>
                 </button>
+            </div>
+            <div class="mobile-menu">
+                <i class="fa fa-times" id="mobile-close" aria-hidden="true" onclick="closeMenu()"></i>
+                <ul class="mobile-nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link-home current" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-favorites current" href="./favorites.html">Favorites</a>
+                    </li>
+                </ul>
+                <div class="theme-switcher-js" id="mobile-switcher">
+                    <input type="checkbox" class="input-switcher" id="switch" />
+                    <label class="input-label" for="switch">Toggle</label>
+                </div>
             </div>
         </nav>
     </div>
 </header>
-<script>
-    const burgerBtn = document.querySelector('.burger-menu');
-    const navList = document.querySelector('.nav-list');
-    const themeToggle = document.getElementById('switch');
-
-    // Burger menu aç/kapat //
-    burgerBtn.addEventListener('click', () => {
-        const isExpanded = burgerBtn.getAttribute('aria-expanded') === 'true';
-        burgerBtn.setAttribute('aria-expanded', (!isExpanded).toString());
-        navList.classList.toggle('show');
-    });
-
-    // Tema toggle //
-    themeToggle.addEventListener('change', () => {
-        if (themeToggle.checked) {
-            document.body.classList.add('dark-theme');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.body.classList.remove('dark-theme');
-            localStorage.setItem('theme', 'light');
-        }
-    });
-
-    // Sayfa yüklendiğinde tema durumunu yükle //
-    window.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-theme');
-            themeToggle.checked = true;
-        }
-    });
-</script>
 
     <main class="homepage">
       <section class="section-hero">
@@ -94,52 +76,11 @@
       </button>
     </div>
     <div class="hero-right-container">
-      <ul class="slider-list">
-        <li class="slider-list-item">
-          <div class="slide">
-            <div class="cooker-card cooker-henson"></div>
-            <div class="main-card">
-              <div class="card-preview barbecue-preview"></div>
-              <h2 class="card-title">Grilled, smoky, delicious barbecue</h2>
-              <p class="card-nation">Spanish</p>
-            </div>
-            <div class="card barbecue-imageDish"></div>
-          </div>
-        </li>
-
-        <li class="slider-list-item">
-          <div class="slide">
-            <div class="cooker-card cooker-ana"></div>
-            <div class="main-card">
-              <div class="card-preview pizza-preview"></div>
-              <h2 class="card-title">Hot, cheesy and satisfying pizza</h2>
-              <p class="card-nation">Italian</p>
-            </div>
-            <div class="card pizza-imageDish"></div>
-          </div>
-        </li>
-
-        <li class="slider-list-item">
-          <div class="slide">
-            <div class="cooker-card cooker-ferran"></div>
-            <div class="main-card">
-              <div class="card-preview pancake-preview"></div>
-              <h2 class="card-title">Grilled, smoky, delicious barbecue</h2>
-              <p class="card-nation">Spanish</p>
-            </div>
-            <div class="card pancake-imageDish"></div>
-          </div>
-        </li>
-
-
-      </ul>
-
-      <div class="hero-slider">
-
+      <div class="swiper">
+        <div class="events swiper-wrapper"></div>
       </div>
-
+      <div class="slider-pagination"></div>
     </div>
-
   </div>
 </section>
 
@@ -161,52 +102,7 @@
 <aside class="sidebar-populer">
   <div class="row">
     <h2 class="sidebar-populer-title">POPULAR RECIPES</h2>
-    <ul class="recipe-list">
-      <li class="recipe-list-item">
-        <img
-          class="recipe-box-img"
-          src="/TastyReats/assets/french-omelette-CSIuQ9lu.png"
-          alt="French Omelette"
-        />
-        <div class="recipe-box">
-          <h3 class="recipe-box-title">FRENCH OMELETTE</h3>
-          <p class="recipe-box-text">
-            A French omelette is a simple yet elegant dish made with whisked
-            eggs, butter, salt, and...
-          </p>
-        </div>
-      </li>
-      <li class="recipe-list-item">
-        <img class="recipe-box-img" src="" alt="Squash Linguine" />
-        <div class="recipe-box">
-          <h3 class="recipe-box-title">SQUASH LINGUINE</h3>
-          <p class="recipe-box-text">
-            Squash linguine is a flavorful and nutritious pasta alternative made
-            with spiralized squash...
-          </p>
-        </div>
-      </li>
-      <li class="recipe-list-item">
-        <img class="recipe-box-img" src="" alt="Baked Salmon" />
-        <div class="recipe-box">
-          <h3 class="recipe-box-title">BAKED SALMON</h3>
-          <p class="recipe-box-text">
-            Baked salmon is a flavorful and nutritious dish featuring tender and
-            moist fillets seasoned with...
-          </p>
-        </div>
-      </li>
-      <li class="recipe-list-item">
-        <img class="recipe-box-img" src="" alt="Sugar Pie" />
-        <div class="recipe-box">
-          <h3 class="recipe-box-title">SUGAR PIE</h3>
-          <p class="recipe-box-text">
-            Sugar pie is a traditional Canadian dessert made with a rich and
-            buttery filling of brow...
-          </p>
-        </div>
-      </li>
-    </ul>
+    <ul class="recipe-list"></ul>
   </div>
 </aside>
 
@@ -256,253 +152,13 @@
     <div class="container">
         <div class="food-container">
             <ul class="foodsList">
-                <li class="foodsList-item">
-                    <img src="/TastyReats/assets/food-DWUx6Uof.png" alt="" class="foodsList-itemImg">
-                    <svg class="foodList-favorite" width="22" height="22">
-                        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-heart"></use>
-                    </svg>
-                    <div class="food-content">
-                        </svg>
-                        <h3 class="foodContent-title"> BANANA PANCAKES</h3>
-                        <P class="foodContent-text">Banana pancakes are a fluffy and sweet breakfast dish made with...
-                        </P>
-                        <div class="raiting-foodContainer">
-                            <div class="raiting-food">
-                                <span class="raiting-foodPoint">4.5 
-                                    <span class="raiting-foodStars">
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star " aria-hidden="true"></i>
-                                    </span> </span>
-                                <button class="raiting-foodButton">See recipe</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="foodsList-item">
-                    <img src="/TastyReats/assets/food-DWUx6Uof.png" alt="" class="foodsList-itemImg">
-                    <svg class="foodList-favorite" width="22" height="22">
-                        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-heart"></use>
-                    </svg>
-                    <div class="food-content">
-                        </svg>
-                        <h3 class="foodContent-title"> BANANA PANCAKES</h3>
-                        <P class="foodContent-text">Banana pancakes are a fluffy and sweet breakfast dish made with...
-                        </P>
-                        <div>
-                            <div class="raiting-food">
-                                <span class="raiting-foodPoint">4.5 
-                                    <span class="raiting-foodStars">
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star " aria-hidden="true"></i>
-                                    </span> </span>
-                                <button class="raiting-foodButton">See recipe</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="foodsList-item">
-                    <img src="/TastyReats/assets/food-DWUx6Uof.png" alt="" class="foodsList-itemImg">
-                    <svg class="foodList-favorite" width="22" height="22">
-                        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-heart"></use>
-                    </svg>
-                    <div class="food-content">
-                        </svg>
-                        <h3 class="foodContent-title"> BANANA PANCAKES</h3>
-                        <P class="foodContent-text">Banana pancakes are a fluffy and sweet breakfast dish made with...
-                        </P>
-                        <div>
-                            <div class="raiting-food">
-                                <span class="raiting-foodPoint">4.5 
-                                    <span class="raiting-foodStars"></span> 
-                                <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star " aria-hidden="true"></i></span>
-                                <button class="raiting-foodButton">See recipe</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="foodsList-item">
-                    <img src="/TastyReats/assets/food-DWUx6Uof.png" alt="" class="foodsList-itemImg">
-                    <svg class="foodList-favorite" width="22" height="22">
-                        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-heart"></use>
-                    </svg>
-                    <div class="food-content">
-                        </svg>
-                        <h3 class="foodContent-title"> BANANA PANCAKES</h3>
-                        <P class="foodContent-text">Banana pancakes are a fluffy and sweet breakfast dish made with...
-                        </P>
-                        <div>
-                            <div class="raiting-food">
-                                <span class="raiting-foodPoint">4.5
-                                     <span class="raiting-foodStars"></span>
-                                    <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star " aria-hidden="true"></i> </span>
-                                <button class="raiting-foodButton">See recipe</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="foodsList-item">
-                    <img src="/TastyReats/assets/food-DWUx6Uof.png" alt="" class="foodsList-itemImg">
-                    <svg class="foodList-favorite" width="22" height="22">
-                        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-heart"></use>
-                    </svg>
-                    <div class="food-content">
-                        </svg>
-                        <h3 class="foodContent-title"> BANANA PANCAKES</h3>
-                        <P class="foodContent-text">Banana pancakes are a fluffy and sweet breakfast dish made with...
-                        </P>
-                        <div>
-                            <div class="raiting-food">
-                                <span class="raiting-foodPoint">4.5 
-                                    <span class="raiting-foodStars"></span>
-                                <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star " aria-hidden="true"></i> </span>
-                                <button class="raiting-foodButton">See recipe</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="foodsList-item">
-                    <img src="/TastyReats/assets/food-DWUx6Uof.png" alt="" class="foodsList-itemImg">
-                    <svg class="foodList-favorite" width="22" height="22">
-                        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-heart"></use>
-                    </svg>
-                    <div class="food-content">
-                        <h3 class="foodContent-title"> BANANA PANCAKES</h3>
-                        <P class="foodContent-text">Banana pancakes are a fluffy and sweet breakfast dish made with...
-                        </P>
-                        <div>
-                            <div class="raiting-food">
-                                <span class="raiting-foodPoint">4.5 
-                                    <span class="raiting-foodStars">
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star " aria-hidden="true"></i>
-                                    </span> </span>
-                                <button class="raiting-foodButton">See recipe</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                       <li class="foodsList-item">
-                    <img src="/TastyReats/assets/food-DWUx6Uof.png" alt="" class="foodsList-itemImg">
-                    <svg class="foodList-favorite" width="22" height="22">
-                        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-heart"></use>
-                    </svg>
-                    <div class="food-content">
-                        <h3 class="foodContent-title"> BANANA PANCAKES</h3>
-                        <P class="foodContent-text">Banana pancakes are a fluffy and sweet breakfast dish made with...
-                        </P>
-                        <div>
-                            <div class="raiting-food">
-                                <span class="raiting-foodPoint">4.5 
-                                    <span class="raiting-foodStars">
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star " aria-hidden="true"></i>
-                                    </span> </span>
-                                <button class="raiting-foodButton">See recipe</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                       <li class="foodsList-item">
-                    <img src="/TastyReats/assets/food-DWUx6Uof.png" alt="" class="foodsList-itemImg">
-                    <svg class="foodList-favorite" width="22" height="22">
-                        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-heart"></use>
-                    </svg>
-                    <div class="food-content">
-                        <h3 class="foodContent-title"> BANANA PANCAKES</h3>
-                        <P class="foodContent-text">Banana pancakes are a fluffy and sweet breakfast dish made with...
-                        </P>
-                        <div>
-                            <div class="raiting-food">
-                                <span class="raiting-foodPoint">4.5 
-                                    <span class="raiting-foodStars">
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star " aria-hidden="true"></i>
-                                    </span> </span>
-                                <button class="raiting-foodButton">See recipe</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                       <li class="foodsList-item">
-                    <img src="/TastyReats/assets/food-DWUx6Uof.png" alt="" class="foodsList-itemImg">
-                    <svg class="foodList-favorite" width="22" height="22">
-                        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-heart"></use>
-                    </svg>
-                    <div class="food-content">
-
-                        <h3 class="foodContent-title"> BANANA PANCAKES</h3>
-                        <P class="foodContent-text">Banana pancakes are a fluffy and sweet breakfast dish made with...
-                        </P>
-                        <div>
-                            <div class="raiting-food">
-                                <span class="raiting-foodPoint">4.5 
-                                    <span class="raiting-foodStars">
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star " aria-hidden="true"></i>
-                                    </span> </span>
-                                <button class="raiting-foodButton">See recipe</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                       <li class="foodsList-item">
-                    <img src="/TastyReats/assets/food-DWUx6Uof.png" alt="" class="foodsList-itemImg">
-                    <svg class="foodList-favorite" width="22" height="22">
-                        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-heart"></use>
-                    </svg>
-                    <div class="food-content">
-                        <h3 class="foodContent-title"> BANANA PANCAKES</h3>
-                        <P class="foodContent-text">Banana pancakes are a fluffy and sweet breakfast dish made with...
-                        </P>
-                        <div>
-                            <div class="raiting-food">
-                                <span class="raiting-foodPoint">4.5 
-                                    <span class="raiting-foodStars">
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                                        <i class="fa fa-star popup-star " aria-hidden="true"></i>
-                                    </span> </span>
-                                <button class="raiting-foodButton">See recipe</button>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+           
             </ul>
         </div>
     </div>
 </section>
+
+
           <section class="pagination">
     <div class="container">
         <div class="pagination-left">
