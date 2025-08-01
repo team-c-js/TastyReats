@@ -1,0 +1,46 @@
+.search-form{
+  display: flex;
+  gap:16px;
+}
+label{
+  display: block;
+}
+input,select{
+  width: 100%;
+}
+.search-text{
+  position: relative;
+}
+.search-input{
+  padding: 14px 18px;
+  border: 1px solid rgba(var(--text-color-rgb),.2);
+  border-radius: 15px;
+  outline: none;
+  position: relative;
+}
+.search-text input{
+  padding-left: 40px;
+}
+.search-text i {
+  position: absolute;
+  left: 16px;
+  top: 15px;
+}
+
+.form-reset{
+  margin-bottom: 20px;
+  display: block;
+}
+
+.group-text{
+  width: 278px;
+}
+.group-time{
+  width: 125px;
+}
+.group-area{
+  width: 141px;
+}
+.group-ingredients{
+  width: 188px;
+}

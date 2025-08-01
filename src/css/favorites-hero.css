@@ -1,0 +1,19 @@
+/* Hero Image */
+.fav-hero {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;    
+    overflow: hidden;    
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 1080px;
+    height: auto;
+    border-radius: 15px;   
+    object-fit: cover;
+    display: block;
+   
+    
+}
