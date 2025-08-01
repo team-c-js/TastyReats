@@ -12,34 +12,33 @@
     <script type="module" crossorigin src="/TastyReats/index.js"></script>
     <link rel="modulepreload" crossorigin href="/TastyReats/assets/modulepreload-polyfill-B5Qt9EMX.js">
     <link rel="modulepreload" crossorigin href="/TastyReats/assets/vendor-BkCUij8E.js">
-    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-DIZncAsO.css">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-DZglwo-5.css">
   </head>
   <body>
-    
-  <header class="header">
+    <header class="header">
     <div class="container">
         <nav class="nav-header">
             <ul class="nav-list" id="mobile-menu">
                 <li class="nav-item">
-                    <a class="nav-link-home" href="./index.html">Home</a>
+                    <a class="nav-link-home current" href="./index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link-favorites" href="./favorites.html">Favorites</a>
+                    <a class="nav-link-favorites current" href="./favorites.html">Favorites</a>
                 </li>
             </ul>
             <a class="logo-link" href="./index.html">tasty<span class="logo-color">treats.</span></a>
-            <div class="header-btn-box"> 
+            <div class="header-btn-box">
                 <button type="button" id="openModal" class="shopping-link">
                     <svg class="shopping-icon" width="24" height="24">
                         <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-shopping-cart"></use>
                     </svg>
                 </button>
-                <!--Toggle-->                  
+                <!--Toggle-->
                 <div class="theme-switcher-js">
-                    <input type="checkbox" class="input-switcher" id="switch"/>
+                    <input type="checkbox" class="input-switcher" id="switch" />
                     <label class="input-label" for="switch">Toggle</label>
-                </div>     
-                <!--Hamburger menu-->        
+                </div>
+                <!--Hamburger menu-->
                 <button class="burger-menu" type="button" aria-expanded="false" aria-controls="mobile-menu">
                     <svg class="burger-menu-icon" width="32" height="32">
                         <use href="/TastyReats/assets/hamburger_menu-a9zm1sYJ.svg#icon-hamburger_menu"></use>
@@ -47,10 +46,9 @@
                 </button>
             </div>
         </nav>
-    </div>               
-  </header>
-  
-  <script>
+    </div>
+</header>
+<script>
     const burgerBtn = document.querySelector('.burger-menu');
     const navList = document.querySelector('.nav-list');
     const themeToggle = document.getElementById('switch');
@@ -81,9 +79,7 @@
             themeToggle.checked = true;
         }
     });
- </script>
-
-  
+</script>
 
     <main class="homepage">
       <section class="section-hero">
