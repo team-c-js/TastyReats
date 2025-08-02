@@ -1,4 +1,7 @@
 
+*{
+    box-sizing: border-box;
+}
 :root{
     --bg-color: #FFFFFF;
     --header-color: #000000;
@@ -15,13 +18,16 @@
     --switch-active-color: #9BB537;
     --btn-bg-color : #9BB537;
     --btn-text-color : #FFFFFF;
+    
 }
 .dark-theme{
     --bg-color: #1E1E1E;
     --header-color : #FFFFFF;
     --text-color : #FFFFFF;
+    --text-color-rgb : 255,255,255;
 }
 
 body{
     font-family: "Inter", sans-serif;
+    background: var(--bg-color);
 }
