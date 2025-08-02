@@ -43,17 +43,19 @@ const UIManager = {
       const StarsHTML = this.Getstars(item.rating);
 
       li.innerHTML = `
+       
   <img src="${item.thumb}" alt="${item.preview}" class="foodsList-itemImg">
+    
    <div class="food-content">
-                        
-                            <h3 class="foodContent-title">${item.title}</h3>
+                             <div class="heartDiv">  <i class="fa fa-heart-o fa-2x foodsHeart" aria-hidden="true" data-id = ${item._id}></i></div>
+                                 <h3 class="foodContent-title">${item.title}</h3>
                         <p class="foodContent-text"> ${item.description?.slice(0, 60)}...</p>
                         <div class="raiting-foodContainer">
                             <div class="raiting-food">
                                 <span class="raiting-foodPoint">${item.rating}
                                     <span class="raiting-foodStars">
                                          ${StarsHTML}
-                                                                       </span> </span>
+                                        </span> </span>
                                 <button 
                                 class="raiting-foodButton"
                                 data-id = ${item._id}
@@ -135,13 +137,13 @@ const UIManager = {
       return a;
     };
 
-  
+
 
     if (currentPage > 4) {
-        const dots = document.createElement('span');
-        dots.className = 'dots';
-        dots.textContent = '...';
-        paginationContainer.appendChild(dots);
+      const dots = document.createElement('span');
+      dots.className = 'dots';
+      dots.textContent = '...';
+      paginationContainer.appendChild(dots);
     }
 
     console.log("sayfalnamaya başlamadı" + currentPage);
@@ -167,14 +169,15 @@ const UIManager = {
     }
 
     if (currentPage < totalPages - 3) {
-        const dots = document.createElement('span');
-        dots.className = 'dots';
-        dots.textContent = '...';
-        paginationContainer.appendChild(dots);
+      const dots = document.createElement('span');
+      dots.className = 'dots';
+      dots.textContent = '...';
+      paginationContainer.appendChild(dots);
     }
 
 
   }
+
 };
 
 const GetFoodsApp = {
@@ -190,4 +193,29 @@ const GetFoodsApp = {
     }
   },
 };
-document.addEventListener('DOMContentLoaded', () => GetFoodsApp.init());
+document.addEventListener('DOMContentLoaded', () => {
+  GetFoodsApp.init();
+
+  document.addEventListener('click', function (e) {
+
+    if (e.target.classList.contains('foodsHeart')) {
+      const foodId = e.target.getAttribute('data-id');
+      let favorites = JSON.parse(localStorage.getItem('favoriteFoods')) || [];
+      console.log(favorites);
+      if (favorites.includes(foodId)) {
+        favorites = favorites.filter(id => id !== foodId);
+        e.target.classList.remove('fa-heart');
+        e.target.classList.add('fa-heart-o');
+      } else {
+
+        favorites.push(foodId);
+        e.target.classList.remove('fa-heart-o');
+        e.target.classList.add('fa-heart');
+      }
+
+      localStorage.setItem('favoriteFoods', JSON.stringify(favorites));
+      console.log(favorites);
+    }
+  });
+
+});
