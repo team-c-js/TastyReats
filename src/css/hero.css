@@ -1,7 +1,7 @@
 /* PC Settings */
 .hero-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 32px;
   margin-top: 100px;
   margin-bottom: 100px;
@@ -59,18 +59,17 @@
 }
 
 .hero-right-container {
-  width: 702px;
+  overflow: hidden;
 }
 
 .swiper {
+  width: 871px;
   z-index: 1;
   margin-left: auto;
   margin-right: auto;
   padding: 0;
   list-style: none;
   display: block;
-  position: relative;
-  overflow: hidden;
 }
 
 .slider-card {
@@ -141,7 +140,7 @@
 }
 
 .swiper-slide-prev {
-  overflow: hidden
+  overflow: hidden;
 }
 
 .slider-pagination {
@@ -214,6 +213,10 @@ span.swiper-pagination-bullet-active {
     /*height: 302px;*/
   }
 
+  .swiper {
+    width: 534px;
+  }
+
   .cooker-card {
     width: 80px;
     height: 280px;
@@ -246,7 +249,7 @@ span.swiper-pagination-bullet-active {
 
   .card {
     height: 280px;
-    width: 200px;
+    width: 222px;
     border-radius: 15px;
     background-size: 500px;
     background-position: 65%;
