@@ -87,6 +87,9 @@
 .popup-star.active{
     color: var(--star-color);
 }
+.popup-star:hover{
+    color:  var(--star-color);
+}
 
 .popup-recipt{
     list-style-type: none;
