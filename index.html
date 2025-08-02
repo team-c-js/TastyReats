@@ -13,7 +13,7 @@
     <link rel="modulepreload" crossorigin href="/TastyReats/assets/modulepreload-polyfill-B5Qt9EMX.js">
     <link rel="modulepreload" crossorigin href="/TastyReats/assets/vendor-D-mUFdd8.js">
     <link rel="stylesheet" crossorigin href="/TastyReats/assets/vendor-BZ_WhpHG.css">
-    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-b6JyxVrC.css">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-BYLiV6de.css">
   </head>
   <body>
     <header class="header">
@@ -162,34 +162,25 @@
           <section class="pagination">
     <div class="container">
         <div class="pagination-left">
-            <a href="" class="pagination-btn pagination-btn-black">
-            <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        </a>
-        <a href="" class="pagination-btn pagination-btn-black">
-            <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        </a>
+            <a href="#" class="pagination-btn pagination-btn-black" id="firstPage">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="pagination-btn pagination-btn-black" id="prevPage">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
         </div>
-        <a href="" class="pagination-btn active">
-            1
-        </a>
-        <a href="" class="pagination-btn">
-            2
-        </a>
-        <a href="" class="pagination-btn">
-            3
-        </a>
-        <a href="" class="pagination-btn">
-            ...
-        </a>
+
+        <div id="paginationContainer" class="pagination-center"></div>
+
         <div class="pagination-right">
-            <a href="" class="pagination-btn pagination-btn-green">
-            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-        </a>
-        <a href="" class="pagination-btn pagination-btn-green">
-            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-        </a>
+            <a href="#" class="pagination-btn pagination-btn-green" id="nextPage">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="pagination-btn pagination-btn-green" id="lastPage">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
         </div>
     </div>
 </section>
