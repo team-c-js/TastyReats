@@ -47,14 +47,18 @@ const UIManager = {
    <div class="food-content">
                         
                             <h3 class="foodContent-title">${item.title}</h3>
-                        <p class="foodContent-text">${item.description} </p>
+                        <p class="foodContent-text"> ${item.description?.slice(0, 60)}...</p>
                         <div class="raiting-foodContainer">
                             <div class="raiting-food">
                                 <span class="raiting-foodPoint">${item.rating}
                                     <span class="raiting-foodStars">
                                          ${StarsHTML}
                                                                        </span> </span>
-                                <button class="raiting-foodButton">See recipe</button>
+                                <button 
+                                class="raiting-foodButton"
+                                data-id = ${item._id}
+                                data-popup = popup-food
+                                >See recipe</button>
                             </div>
                         </div>
                     </div>

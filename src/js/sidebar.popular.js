@@ -60,9 +60,6 @@ const PopularRecipesUI = {
           <h3 class="recipe-box-title">${recipe.title}</h3>
           <p class="recipe-box-text">${recipe.description?.slice(0, 90)}...</p>
 
-          <p class="recipe-box-text">${
-            recipe.description?.slice(0, 100) || ''
-          }...</p>
         </div>
       `;
 
