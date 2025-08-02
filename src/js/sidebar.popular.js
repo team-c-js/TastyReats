@@ -1,3 +1,5 @@
+// VEDAT BAŞAK //
+
 import axios from 'axios';
 
 const API_CONFIG = {
@@ -35,14 +37,20 @@ const PopularRecipesAPI = {
 const PopularRecipesUI = {
   displayPopularRecipes(recipes) {
     const PopularRecipesList = document.querySelector('.recipe-list');
+    if (!PopularRecipesList) return;
+
     PopularRecipesList.innerHTML = '';
 
     recipes.forEach(recipe => {
       const recipeList = document.createElement('li');
       recipeList.classList.add('recipe-list-item');
       recipeList.dataset.id = recipe._id;
+
       recipeList.dataset.popup = 'popup-food';
       
+
+      recipeList.dataset.recipe_name = recipe.title;
+
 
       recipeList.innerHTML = `
         <img class="recipe-box-img" src="${recipe.preview}" alt="${
@@ -51,12 +59,27 @@ const PopularRecipesUI = {
         <div class="recipe-box">
           <h3 class="recipe-box-title">${recipe.title}</h3>
           <p class="recipe-box-text">${recipe.description?.slice(0, 90)}...</p>
+
+          <p class="recipe-box-text">${
+            recipe.description?.slice(0, 100) || ''
+          }...</p>
         </div>
       `;
 
       PopularRecipesList.appendChild(recipeList);
     });
+
     
+
+
+    PopularRecipesList.addEventListener('click', event => {
+      const onClickList = event.target.closest('.recipe-list-item');
+      if (!onClickList) return;
+
+      const recipeListName = onClickList.dataset.recipe_name;
+      console.log('Tıklanan data-recipe_name:', recipeListName);
+    });
+
   },
 };
 
