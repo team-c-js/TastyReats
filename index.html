@@ -11,9 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="/TastyReats/index.js"></script>
     <link rel="modulepreload" crossorigin href="/TastyReats/assets/modulepreload-polyfill-B5Qt9EMX.js">
-    <link rel="modulepreload" crossorigin href="/TastyReats/assets/vendor-D-mUFdd8.js">
-    <link rel="stylesheet" crossorigin href="/TastyReats/assets/vendor-BZ_WhpHG.css">
-    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-OSQRPSm2.css">
+    <link rel="modulepreload" crossorigin href="/TastyReats/assets/vendor-BPewsEMl.js">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/vendor-BIx4N7Dj.css">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-CtguKy3X.css">
   </head>
   <body>
     <header class="header">
@@ -121,8 +121,8 @@
   
   <div class="form-group group-time">
     <label for="search-time">Time</label>
-    <select name="search-time" id="search-time" class="search-input">
-      <option value="all">All</option>
+    <select name="search-time" id="search-time" class="search-input search-select">
+      <option value="">All</option>
       <option value="10">10</option>
       <option value="20">20</option>
       <option value="30">30</option>
@@ -135,20 +135,20 @@
   
   <div class="form-group group-area">
     <label for="search-area">Area</label>
-    <select name="search-area" id="search-area" class="search-input">
-      <option value="all">All</option>
+    <select name="search-area" id="search-area" class="search-input search-select">
+      <option value="">All</option>
     </select>
   </div>
 
   <div class="form-group group-ingredients">
     <label for="search-ingredients">Ingredients</label>
-    <select name="search-ingredients" id="search-ingredients" class="search-input">
-      <option value="all">All</option>
+    <select name="search-ingredients" id="search-ingredients" class="search-input search-select">
+      <option value="">All</option>
     </select>
   </div>
 </form>
 
-<a href="#" class="form-reset">Reset the Filter</a>
+<a href="#" class="form-reset"><i class="fa fa-times" aria-hidden="true"></i> Reset the Filter</a>
           <section class="foods">
     <div class="container">
         <div class="food-container">
@@ -206,24 +206,7 @@
             <i class="fa fa-times popup-close" aria-hidden="true"></i>
         </div>
         <div class="popup-content">
-            <h3 class="popup-title">Raiting</h3>
-            <div class="raiting">
-                <span class="raiting-counter">0.0</span>
-                <div class="raiting-stars">
-                    <i class="fa fa-star popup-star active" aria-hidden="true"></i>
-                        <i class="fa fa-star popup-star " aria-hidden="true"></i>
-                        <i class="fa fa-star popup-star " aria-hidden="true"></i>
-                        <i class="fa fa-star popup-star " aria-hidden="true"></i>
-                        <i class="fa fa-star popup-star " aria-hidden="true"></i>
-                </div>
-            </div>
-            <form action="" class="popup-order-form">
-              <div class="form-row">
-                <label for="name">Name</label>
-                <input type="text" class="popup-input"  id="name" required>
-              </div>
-              <button class="popup-green-btn">Send</button>
-            </form>
+            
         </div>
     </div>
 </section>
