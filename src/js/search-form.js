@@ -1,5 +1,4 @@
 import axios from "axios"; // AXIOS IMPORT ETME
-
 // 1. API YAPILANDIRMA
 /*
   ENDPOINTS İCİNDE SORGU ATMAMIZ GERKEN SAYFALARIN URL KISMINI VERIYORUZ
@@ -59,35 +58,46 @@ const ApiService = {
   },
   async searchRecipes(inputValue, selectedValues) {
   try {
-    const [time, area_ids, ingredient_ids] = selectedValues;
-
-    const params = {
-      title: inputValue,
-      time: time || "", // Tek değer
-    };
-
-    // Alan ID'leri (dizi) - Sadece dolu dizileri ekle
-    if (area_ids && area_ids.length > 0) {
-      params.area_ids = area_ids.join(','); // ID'leri virgülle ayrılmış stringe çevir
-    }
-
-    // Malzeme ID'leri (dizi) - Sadece dolu dizileri ekle
-    if (ingredient_ids && ingredient_ids.length > 0) {
-      params.ingredient_ids = ingredient_ids.join(',');
-    }
-
-    const response = await axios.get(API_CONFIG.ENDPOINTS.RECIPES, { params });
-    console.log("API Response:", response.data.results);
-    return response.data.results;
     
+    const [time, area, ingredient_ids] = selectedValues;
+    
+    try{
+        const params  = {
+          page : 1,
+          limit :9,
+        };
+        if(inputValue){
+          params.title = inputValue;
+        }
+        if(time){
+          params.time = time;
+        }
+        if(area){
+          params.area = area;
+        }
+        if(ingredient_ids){
+          params.ingredients = ingredient_ids;
+        }
+
+        console.log(params);
+        const deneme = axios.get(`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.RECIPES}`, 
+          {params : params}
+        );
+        
+        deneme.then(response => {
+          console.log(response.data); // Doğru veri burada
+        }).catch(error => {
+          console.error('Hata:', error);
+        });
+    }catch(error){
+        return handleError(error, 'getAllAreas');
+    }
   } catch(error) {
     return handleError(error, 'searchRecipes');
   }
-}
+  }
 };
 
-// DOM YÖNETİMİ
-//HTML SAYFANIZA GELEN VERİYİ İŞLEME
 const UIManager = {
     createTime(times){
         const timeSelect = document.querySelector('#search-time');
@@ -97,7 +107,7 @@ const UIManager = {
         
         areas.forEach(area => {
             const option = document.createElement('option');
-            option.value = area._id;
+            option.value = area.name;
             option.textContent = area.name;
 
             aresSelect.appendChild(option);
@@ -136,11 +146,9 @@ const UIManager = {
         function logValues() {
             const inputValue = searchInput.value;
             const selectedValues = Array.from(searchSelects).map(select => {
-                // Çoklu seçimler için tüm seçili değerleri dizi olarak al
                 if (select.multiple) {
                     return Array.from(select.selectedOptions).map(option => option.value);
                 } 
-                // Tekli seçimler için normal değer
                 else {
                     return select.value;
                 }
@@ -148,10 +156,33 @@ const UIManager = {
             ApiService.searchRecipes(inputValue,selectedValues);
         }
         
+    },
+    clearForm(){
+      const clearBtn = document.querySelector('.form-reset');
+      console.log(clearBtn);
+        clearBtn.addEventListener('click', (e)=> {
+          e.preventDefault();
+          const inputSearch = document.querySelector('#search-input-text');
+          if (inputSearch) inputSearch.value = '';
+          const inputSelect = document.querySelectorAll('.search-form select');
+          inputSelect.forEach(select => {
+            select.value = ''; 
+          });
+          const inputValue  = inputSearch.value;
+            const selectedValues = Array.from(inputSelect).map(select => {
+                if (select.multiple) {
+                    return Array.from(select.selectedOptions).map(option => option.value);
+                } 
+                else {
+                    return select.value;
+                }
+            });
+          ApiService.searchRecipes(inputValue,selectedValues);
+          ApiService.searchRecipes(inputValue, selectedValues)
+        });
     }
 };
 
-//UYGULAMAYI  İŞLEMEK 
 
 const App = { //buradaki App değişkenini kendi bölümüne özel bir isimle değiştir
   async init() {
@@ -162,6 +193,7 @@ const App = { //buradaki App değişkenini kendi bölümüne özel bir isimle de
         await UIManager.createAreas(areas);
         await UIManager.createIngedients(ingredients);
         await UIManager.listenSearchForm();
+        await UIManager.clearForm();
       // Tüm tarifler sayfası
       /*if (document.querySelector('.recipes-container')) {
         await this.initRecipesPage();
