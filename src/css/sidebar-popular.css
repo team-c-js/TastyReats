@@ -18,6 +18,11 @@
   align-items: flex-start;
   margin-bottom: 24px;
   gap: 16px;
+  cursor:pointer;
+  transition: all .2s ease;
+}
+.sidebar-populer .recipe-list-item:hover{
+  transform: scale(1.02);
 }
 
 .sidebar-populer .recipe-box-img {
@@ -68,18 +73,7 @@
 }
 /* MOBİLE STYLE */
 @media screen and (min-width: 350px) and (max-width: 767px) {
-  .sidebar-populer .recipe-list-item {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  .sidebar-populer .recipe-box-img {
-    width: 100%;
-    height: 140px;
-    margin-bottom: 6px;
-    border-radius: 8px;
-  }
+  
   .sidebar-populer .recipe-box {
     align-items: flex-start;
   }

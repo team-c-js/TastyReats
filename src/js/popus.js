@@ -106,10 +106,12 @@ const UIManager = {
   closePopup() {
     const closeBtn = document.querySelector('.popup-close');
     closeBtn.addEventListener('click', (e) => {
+      const video = document.querySelector('.popup-video');
       e.preventDefault();
       const popup = document.querySelector('.popup');
       popup.style.display = 'none';
       popup.className = 'popup';
+      video.innerHTML = '';
     });
   },
   
@@ -120,19 +122,20 @@ const UIManager = {
         
       const popup = document.querySelector('.popup-content');
       popup.innerHTML = '';
-      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-      const match = recipe.youtube.match(regExp);
-      
-      let videoId = (match && match[2].length === 11) ? match[2] : null;
-      videoId = videoId ? `https://www.youtube.com/embed/${videoId}` : null;
-      
+      const videoId = new URL(recipe.youtube).searchParams.get("v");
       popup.innerHTML = `
         <h3 class="popup-title">${recipe.title}</h3>
         <div class="popup-video">
-          <iframe src="${videoId}"
-           frameborder="0" allow="accelerometer; autoplay; 
-           clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-           allowfullscreen></iframe>
+          <iframe 
+            width="100%" 
+            height="250" 
+            src="https://www.youtube.com/embed/${videoId}" 
+            title="" 
+            frameborder="0" 
+            allow="accelerometer;clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
         </div>
         <div class="popup-tags-raiting">
             <ul class="popup-tag-list">

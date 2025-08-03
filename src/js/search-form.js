@@ -56,7 +56,7 @@ const ApiService = {
         return handleError(error, 'getAllIndredients');
     }
   },
-  async searchRecipes(inputValue, selectedValues) {
+  async searchRecipes(inputValue, selectedValues,category) {
   try {
     
     const [time, area, ingredient_ids] = selectedValues;
@@ -78,6 +78,9 @@ const ApiService = {
         if(ingredient_ids){
           params.ingredients = ingredient_ids;
         }
+        if(category){
+          params.category = category;
+        }
 
         console.log(params);
         const deneme = axios.get(`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.RECIPES}`, 
@@ -85,7 +88,7 @@ const ApiService = {
         );
         
         deneme.then(response => {
-          console.log(response.data); // Doğru veri burada
+          console.log(response.data); 
         }).catch(error => {
           console.error('Hata:', error);
         });
@@ -124,63 +127,6 @@ const UIManager = {
             ingredientsArea.appendChild(option);
         });
     },
-    listenSearchForm(){
-       const searchInput = document.querySelector('#search-input-text');
-       const searchSelects = document.querySelectorAll('select');
-       let timeout;
-
-       searchInput.addEventListener('input', function() {
-            clearTimeout(timeout);
-
-            timeout = setTimeout(function() {
-                logValues();
-            }, 300);
-        });
-
-        searchSelects.forEach(select => {
-            select.addEventListener('change', function() {
-                logValues();
-            });
-        });
-
-        function logValues() {
-            const inputValue = searchInput.value;
-            const selectedValues = Array.from(searchSelects).map(select => {
-                if (select.multiple) {
-                    return Array.from(select.selectedOptions).map(option => option.value);
-                } 
-                else {
-                    return select.value;
-                }
-            });
-            ApiService.searchRecipes(inputValue,selectedValues);
-        }
-        
-    },
-    clearForm(){
-      const clearBtn = document.querySelector('.form-reset');
-      console.log(clearBtn);
-        clearBtn.addEventListener('click', (e)=> {
-          e.preventDefault();
-          const inputSearch = document.querySelector('#search-input-text');
-          if (inputSearch) inputSearch.value = '';
-          const inputSelect = document.querySelectorAll('.search-form select');
-          inputSelect.forEach(select => {
-            select.value = ''; 
-          });
-          const inputValue  = inputSearch.value;
-            const selectedValues = Array.from(inputSelect).map(select => {
-                if (select.multiple) {
-                    return Array.from(select.selectedOptions).map(option => option.value);
-                } 
-                else {
-                    return select.value;
-                }
-            });
-          ApiService.searchRecipes(inputValue,selectedValues);
-          ApiService.searchRecipes(inputValue, selectedValues)
-        });
-    }
 };
 
 
@@ -192,8 +138,6 @@ const App = { //buradaki App değişkenini kendi bölümüne özel bir isimle de
         await UIManager.createTime();
         await UIManager.createAreas(areas);
         await UIManager.createIngedients(ingredients);
-        await UIManager.listenSearchForm();
-        await UIManager.clearForm();
       // Tüm tarifler sayfası
       /*if (document.querySelector('.recipes-container')) {
         await this.initRecipesPage();

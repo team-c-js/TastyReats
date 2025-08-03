@@ -45,34 +45,11 @@ const UIManager = {
       const button = document.createElement('button');
       button.className = 'category-btn';
       button.textContent = category.name;
-      button.dataset.id = category._id;
+      button.dataset.id = category.name;
       item.appendChild(button);
       container.appendChild(item);
     });
   },
-  clickCategories(){
-    const buttons = document.querySelectorAll('.category-btn');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', (e)=> {
-       
-        const allButtons = document.querySelectorAll('.category-btn');
-
-        allButtons.forEach(btn => btn.classList.remove('active'));
-        
-        e.target.classList.add('active');
-         alert(e.target.dataset.id);
-        });
-    });
-  },
-  clearCategories(){
-    
-    const btn = document.querySelector('.all-categories-btn');
-
-    btn.addEventListener('click', (e)=> {
-        e.preventDefault();
-        console.log('burada yemekler tekrar yüklenecek ve active classı silinecek');
-    });
-  }
 
 };
 
@@ -83,8 +60,6 @@ const sidebarCategoriesApp = {
       const categories = await ApiService.getAllCategories();
       if (categories) {
         UIManager.renderCategories(categories);
-        UIManager.clickCategories();
-        UIManager.clearCategories();
       }
     } catch (error) {
       console.error('Uygulama başlatılırken bir hata oluştu:', error);

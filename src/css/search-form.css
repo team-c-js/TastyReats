@@ -1,9 +1,16 @@
 .search-form{
   display: flex;
   gap:16px;
+  flex-wrap: wrap;
 }
-label{
+.search-form label{
   display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: rgba(var(--text-color-rgb),.5);
+  margin-bottom: 8px;
+
 }
 input,select{
   width: 100%;
@@ -17,6 +24,13 @@ input,select{
   border-radius: 15px;
   outline: none;
   position: relative;
+  font-size: 16px;
+  color: rgba(var(--text-color-rgb),.5);
+  background: transparent;
+}
+.search-input::placeholder{
+  font-size: 16px;
+  color: rgba(var(--text-color-rgb),.5);
 }
 .search-text input{
   padding-left: 40px;
@@ -25,13 +39,25 @@ input,select{
   position: absolute;
   left: 16px;
   top: 15px;
+  color: rgba(var(--text-color-rgb),.5);
 }
-
+.search-select{
+  font-size: 16px;
+  font-weight: 500;
+}
 .form-reset{
-  margin-bottom: 20px;
-  display: block;
+  margin:14px 0;
+  display: flex;
+  justify-content: end;
+  color: rgba(var(--text-color-rgb),.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-
+.form-reset i {
+  color: var(--btn-bg-color);
+  font-size: 20px;
+}
 .group-text{
   width: 278px;
 }
@@ -43,4 +69,21 @@ input,select{
 }
 .group-ingredients{
   width: 188px;
+}
+
+/* mobil */
+@media  (min-width: 350px)and (max-width: 767px){
+  .group-text{
+    width: 100%;
+  }
+  .group-time{
+    width: calc((100% - 16px)/2);
+  }
+  .group-area{
+    width: calc((100% - 16px)/2);
+  }
+  .group-ingredients{
+    width: 50%;
+  }
+  
 }

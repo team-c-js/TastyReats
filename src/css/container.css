@@ -54,12 +54,24 @@
     margin : 0 auto;
     padding: 32px;
   }
+  .homepage > .container{
+    gap: 32px;
+  }
 }
 
 @media screen and (min-width: 350px) and (max-width: 767px){
   .container{
     max-width: 375;
     margin : 0 auto;
-    padding: 20px;
+  }
+  .homepage > .container{
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  .sidebar{
+    width: 100%;
+  }
+  .content{
+    width: 100%;
   }
 }

@@ -1,5 +1,4 @@
 // VEDAT BAŞAK //
-
 import axios from 'axios';
 
 const API_CONFIG = {

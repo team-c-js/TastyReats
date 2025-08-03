@@ -1,4 +1,6 @@
 import axios from 'axios';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const API_CONFIG = {
   BASE_URL: 'https://tasty-treats-backend.p.goit.global/api',
@@ -6,24 +8,31 @@ const API_CONFIG = {
     RECIPES: '/recipes',
   },
 };
+
 axios.defaults.baseURL = API_CONFIG.BASE_URL;
 
 const handleError = (error, context = '') => {
-  console.error(`[${context}] Hata:`, error);
-  const errorContainer = document.querySelector('.error-message');
-  if (errorContainer) {
-    errorContainer.textContent = `Veri yüklenirken hata oluştu: ${error.message}`;
-    errorContainer.style.display = 'block';
-  }
+  iziToast.error({
+    title: 'Hata',
+    message: `Bir sorun oluştu (${context}): ${error.message}`,
+    position: 'topRight',
+    timeout: 4000,
+  });
   return null;
 };
 
 const ApiService = {
-  async getAllRecipes(page = 1, limit = 9) {
+  async getAllRecipes(inputValue = null, selectedValues = [null, null, null], category = null, page = 1) {
     try {
-      const response = await axios.get(
-        `${API_CONFIG.ENDPOINTS.RECIPES}?page=${page}&limit=${limit}`
-      );
+      const [time, area, ingredient_ids] = selectedValues;
+      const params = { page, limit: 9 };
+      if (inputValue) params.title = inputValue;
+      if (time) params.time = time;
+      if (area) params.area = area;
+      if (ingredient_ids) params.ingredient = ingredient_ids;
+      if (category) params.category = category;
+
+      const response = await axios.get(API_CONFIG.ENDPOINTS.RECIPES, { params });
       return response.data;
     } catch (error) {
       return handleError(error, 'getAllRecipes');
@@ -32,58 +41,77 @@ const ApiService = {
 };
 
 const UIManager = {
+  currentState: {
+    page: 1,
+    inputValue: null,
+    selectedValues: [null, null, null],
+    category: null,
+  },
+
   createFoodsCard(food) {
-    const foodsList = document.querySelector(`.foodsList`);
+    const foodsList = document.querySelector('.foodsList');
+    if (!foodsList) return;
+
     foodsList.innerHTML = '';
 
-    for (const k in food.results) {
-      const item = food.results[k];
+    if (!food.results || food.results.length === 0) {
+      iziToast.warning({
+        title: 'Sonuç Yok',
+        message: 'Aradığınız kriterlere uygun yemek bulunamadı.',
+        position: 'topCenter',
+        timeout: 4000,
+      });
+      this.renderPagination(1, 1);
+      return;
+    }
+
+    for (const item of food.results) {
       const li = document.createElement('li');
       li.className = 'foodsList-item';
       const StarsHTML = this.Getstars(item.rating);
 
-      li.innerHTML = `
-       
-  <img src="${item.thumb}" alt="${item.preview}" class="foodsList-itemImg">
-    
-   <div class="food-content">
-                             <div class="heartDiv">  <i class="fa fa-heart-o fa-2x foodsHeart" aria-hidden="true" data-id = ${item._id}></i></div>
-                                 <h3 class="foodContent-title">${item.title}</h3>
-                        <p class="foodContent-text"> ${item.description?.slice(0, 60)}...</p>
-                        <div class="raiting-foodContainer">
-                            <div class="raiting-food">
-                                <span class="raiting-foodPoint">${item.rating}
-                                    <span class="raiting-foodStars">
-                                         ${StarsHTML}
-                                        </span> </span>
-                                <button 
-                                class="raiting-foodButton"
-                                data-id = ${item._id}
-                                data-popup = popup-food
-                                >See recipe</button>
-                            </div>
-                        </div>
-                    </div>
+      const favorites = JSON.parse(localStorage.getItem('favoriteFoods')) || [];
+      const isFavorite = favorites.includes(item._id);
+      const heartClass = isFavorite ? 'fa-heart' : 'fa-heart-o';
 
+      li.innerHTML = `
+        <img src="${item.thumb}" alt="${item.preview}" class="foodsList-itemImg">
+        <div class="food-content">
+          <div class="heartDiv">
+            <i class="fa ${heartClass} fa-2x foodsHeart" aria-hidden="true" data-id="${item._id}"></i>
+          </div>
+          <div class="food-box-content">
+            <h3 class="foodContent-title">${item.title}</h3>
+            <p class="foodContent-text">${item.description?.slice(0, 60)}...</p>
+            <div class="raiting-foodContainer">
+              <div class="raiting-food">
+                <span class="raiting-foodPoint">${item.rating}
+                  <span class="raiting-foodStars">${StarsHTML}</span>
+                </span>
+                <button class="raiting-foodButton" data-id="${item._id}" data-popup="popup-food">See recipe</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
       `;
       foodsList.appendChild(li);
     }
-    this.renderPagination(food.totalPages, food.page);
 
+    this.renderPagination(food.totalPages, food.page);
   },
+
   Getstars(r) {
-    let starsHtml = ``;
-    const raitingStar = Math.floor(r);
-    const TotalStars = 5;
-    for (let i = 0; i < TotalStars; i++) {
-      if (i < raitingStar) {
-        starsHtml += `<i class="fa fa-star popup-star active" aria-hidden="true"></i>`;
-      } else {
-        starsHtml += `<i class="fa fa-star popup-star" aria-hidden="true"></i>`;
-      }
+    let starsHtml = '';
+    const ratingStar = Math.floor(r);
+    for (let i = 0; i < 5; i++) {
+      starsHtml += i < ratingStar
+        ? `<i class="fa fa-star popup-star active" aria-hidden="true"></i>`
+        : `<i class="fa fa-star popup-star" aria-hidden="true"></i>`;
     }
     return starsHtml;
   },
+
   renderPagination(totalPages, currentPage) {
     currentPage = Number(currentPage);
     const paginationContainer = document.getElementById('paginationContainer');
@@ -111,111 +139,171 @@ const UIManager = {
 
     nextPageBtn.onclick = (e) => {
       e.preventDefault();
-
       if (currentPage < totalPages) GetFoodsApp.init(currentPage + 1);
     };
 
     lastPageBtn.onclick = (e) => {
       e.preventDefault();
-
       if (currentPage !== totalPages) GetFoodsApp.init(totalPages);
     };
 
-    const createPageLink = (number, goPage, isActive = false) => {
+    const createPageLink = (number) => {
       const a = document.createElement('a');
       a.href = '#';
       a.textContent = number;
       a.className = 'pagination-btn';
-      if (isActive) a.classList.add('active');
+      if (number === currentPage) a.classList.add('active');
 
       a.addEventListener('click', (e) => {
         e.preventDefault();
-        GetFoodsApp.init(goPage);
-
+        GetFoodsApp.init(number);
       });
 
       return a;
     };
 
+    const createDots = () => {
+      const span = document.createElement('span');
+      span.className = 'dots';
+      span.textContent = '...';
+      return span;
+    };
 
-
+    paginationContainer.appendChild(createPageLink(1));
     if (currentPage > 4) {
-      const dots = document.createElement('span');
-      dots.className = 'dots';
-      dots.textContent = '...';
-      paginationContainer.appendChild(dots);
+      paginationContainer.appendChild(createDots());
     }
 
-    console.log("sayfalnamaya başlamadı" + currentPage);
+    const start = Math.max(2, currentPage - 2);
+    const end = Math.min(totalPages - 1, currentPage + 2);
 
-    let startPage = Math.max(1, Number(currentPage) - 2);
-    let endPage = Math.min(Number(currentPage) + 2);
-
-
-    if (totalPages <= 5) {
-      startPage = 2;
-      endPage = totalPages - 1;
-    }
-
-    for (let i = startPage; i < endPage; i++) {
-
-      if (i > 0 && i <= totalPages) {
-
-        paginationContainer.appendChild(createPageLink(i, i));
-        if (i === 32) {
-          i === 1;
-        }
-      }
+    for (let i = start; i <= end; i++) {
+      paginationContainer.appendChild(createPageLink(i));
     }
 
     if (currentPage < totalPages - 3) {
-      const dots = document.createElement('span');
-      dots.className = 'dots';
-      dots.textContent = '...';
-      paginationContainer.appendChild(dots);
+      paginationContainer.appendChild(createDots());
     }
 
+    if (totalPages > 1) {
+      paginationContainer.appendChild(createPageLink(totalPages));
+    }
+  },
 
-  }
+  listenSearchForm() {
+    const searchInput = document.querySelector('#search-input-text');
+    const searchSelects = document.querySelectorAll('select');
+    let timeout;
 
+    const updateStateAndFetch = () => {
+      this.currentState.inputValue = searchInput.value;
+
+      const activeBtn = document.querySelector('.category-btn.active');
+      this.currentState.category = activeBtn ? activeBtn.dataset.id : null;
+
+      this.currentState.selectedValues = Array.from(searchSelects).map(select =>
+        select.multiple
+          ? Array.from(select.selectedOptions).map(opt => opt.value)
+          : select.value
+      );
+
+      this.currentState.page = 1;
+      GetFoodsApp.init();
+    };
+
+    searchInput.addEventListener('input', () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(updateStateAndFetch, 300);
+    });
+
+    searchSelects.forEach(select => {
+      select.addEventListener('change', updateStateAndFetch);
+    });
+  },
+
+  clearForm() {
+    const clearBtn = document.querySelector('.form-reset');
+    if (!clearBtn) return;
+
+    clearBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('#search-input-text').value = '';
+      document.querySelectorAll('.search-form select').forEach(select => {
+        select.value = '';
+      });
+
+      const activeCategoryBtn = document.querySelector('.category-btn.active');
+      const currentCategory = activeCategoryBtn ? activeCategoryBtn.dataset.id : null;
+
+      this.currentState = {
+        page: 1,
+        inputValue: null,
+        selectedValues: [null, null, null],
+        category: currentCategory,
+      };
+
+      GetFoodsApp.init();
+    });
+  },
+
+  setupEventDelegation() {
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+
+      if (target.classList.contains('foodsHeart')) {
+        const foodId = target.dataset.id;
+        let favorites = JSON.parse(localStorage.getItem('favoriteFoods')) || [];
+
+        if (favorites.includes(foodId)) {
+          favorites = favorites.filter(id => id !== foodId);
+          target.classList.replace('fa-heart', 'fa-heart-o');
+        } else {
+          favorites.push(foodId);
+          target.classList.replace('fa-heart-o', 'fa-heart');
+        }
+
+        localStorage.setItem('favoriteFoods', JSON.stringify(favorites));
+      }
+
+      if (target.classList.contains('category-btn')) {
+        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        target.classList.add('active');
+        this.currentState.category = target.dataset.id;
+        this.currentState.page = 1;
+        GetFoodsApp.init();
+      }
+
+      if (target.classList.contains('all-categories-btn')) {
+        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        this.currentState.category = null;
+        this.currentState.page = 1;
+        GetFoodsApp.init();
+      }
+    });
+  },
 };
 
 const GetFoodsApp = {
-  async init(page = 1) {
+  async init(page = UIManager.currentState.page) {
     try {
-      const food = await ApiService.getAllRecipes(page);
-
-      if (food) {
-        UIManager.createFoodsCard(food);
-      }
+      UIManager.currentState.page = page;
+      const { inputValue, selectedValues, category } = UIManager.currentState;
+      const food = await ApiService.getAllRecipes(inputValue, selectedValues, category, page);
+      if (food) UIManager.createFoodsCard(food);
     } catch (error) {
-      console.error('Uygulama başlatılırken bir hata oluştu:', error);
+      iziToast.error({
+        title: 'Yükleme Hatası',
+        message: error.message,
+        position: 'topRight',
+        timeout: 4000,
+      });
     }
   },
 };
+
 document.addEventListener('DOMContentLoaded', () => {
   GetFoodsApp.init();
-
-  document.addEventListener('click', function (e) {
-
-    if (e.target.classList.contains('foodsHeart')) {
-      const foodId = e.target.getAttribute('data-id');
-      let favorites = JSON.parse(localStorage.getItem('favoriteFoods')) || [];
-      console.log(favorites);
-      if (favorites.includes(foodId)) {
-        favorites = favorites.filter(id => id !== foodId);
-        e.target.classList.remove('fa-heart');
-        e.target.classList.add('fa-heart-o');
-      } else {
-
-        favorites.push(foodId);
-        e.target.classList.remove('fa-heart-o');
-        e.target.classList.add('fa-heart');
-      }
-
-      localStorage.setItem('favoriteFoods', JSON.stringify(favorites));
-      console.log(favorites);
-    }
-  });
-
+  UIManager.listenSearchForm();
+  UIManager.clearForm();
+  UIManager.setupEventDelegation();
 });

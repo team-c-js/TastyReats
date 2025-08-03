@@ -73,3 +73,12 @@
     cursor: not-allowed;
     pointer-events: none;
 }
+
+@media  (min-width: 350px)and (max-width: 767px){
+  .pagination-btn{
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+  
+}
