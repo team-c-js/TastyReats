@@ -1,4 +1,6 @@
 import axios from 'axios';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const API_CONFIG = {
   BASE_URL: 'https://tasty-treats-backend.p.goit.global/api',
@@ -105,14 +107,22 @@ const UIManager = {
   
   closePopup() {
     const closeBtn = document.querySelector('.popup-close');
-    closeBtn.addEventListener('click', (e) => {
-      const video = document.querySelector('.popup-video');
-      e.preventDefault();
-      const popup = document.querySelector('.popup');
+    const video = document.querySelector('.popup-video');
+    const popup = document.querySelector('.popup');
+    function close(){
       popup.style.display = 'none';
       popup.className = 'popup';
       video.innerHTML = '';
+    }
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      close();
     });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          close();
+        }
+      });
   },
   
   async fillPopupContent(recipeId) {
@@ -123,6 +133,9 @@ const UIManager = {
       const popup = document.querySelector('.popup-content');
       popup.innerHTML = '';
       const videoId = new URL(recipe.youtube).searchParams.get("v");
+      const favorites = JSON.parse(localStorage.getItem('favoriteFoods')) || [];
+      const isFavorite = favorites.includes(recipeId);
+      const btnText = isFavorite ? 'Remove To Favorite' : 'Add to Favorite';
       popup.innerHTML = `
         <h3 class="popup-title">${recipe.title}</h3>
         <div class="popup-video">
@@ -169,11 +182,16 @@ const UIManager = {
         </div>
 
         <div class="popup-buttons">
-            <button class="popup-green-btn">Add to Favorite</button>
+            <button class="popup-green-btn"
+            data-favorite="${isFavorite ? 'true' : 'false'}"
+            data-id="${recipeId}"
+            id="addtofavotie"
+            >${btnText}</button>
             <button class="popup-outline-green-btn"
               data-id="${recipeId}"
-              data-popup="popup-raiting"
-            >Give a rating</button>
+              data-popup="popup-raiting">
+              Give a rating
+            </button>
         </div>
       `;
       
@@ -231,7 +249,7 @@ const UIManager = {
         <form class="popup-order-form">
           <div class="form-row">
             <label for="email">Email</label>
-            <input type="email" class="popup-input" id="email" required>
+            <input type="email" class="popup-input" id="email" pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})" required />
           </div>
           <button type="submit" class="popup-green-btn">Send Rating</button>
         </form>
@@ -292,13 +310,24 @@ const UIManager = {
           
           const result = await ApiService.submitRating(ratingData);
           if (result) {
-            alert('Değerlendirmeniz için teşekkür ederiz!');
+            
             const popup = document.querySelector('.popup');
             popup.style.display = 'none';
+            iziToast.success({
+              title: 'Teşekkürler!',
+              message: 'Değerlendirmeniz için teşekkür ederiz!',
+              position: 'topRight', 
+              timeout: 3000,        
+            });
+
           }
         } catch (error) {
-          console.error('Değerlendirme gönderilirken hata:', error);
-          alert('Değerlendirme gönderilirken bir hata oluştu. Lütfen tekrar deneyin.');
+          iziToast.success({
+              title: 'Hata!',
+              message: 'Bazı Şeyler Yanlış Gitti...',
+              position: 'topRight', 
+              timeout: 3000,        
+            });
         }
       });
     }
@@ -381,6 +410,45 @@ const UIManager = {
     }
     return starsHtml;
   },
+  addFavoriteBtn(){
+    document.addEventListener('click', (e)=> {
+        const btn = e.target.closest('#addtofavotie');
+        if(!btn) return;
+        const recipeId = btn.dataset.id;
+        const isFavorite = btn.dataset.favorite === 'true';
+
+        if(isFavorite){
+          let favoriteFoods = JSON.parse(localStorage.getItem('favoriteFoods')) || [];
+          favoriteFoods = favoriteFoods.filter(id => id !== recipeId);
+          localStorage.setItem('favoriteFoods', JSON.stringify(favoriteFoods));
+
+          const listItem = document.querySelector(`.foodsList-item [data-id="${recipeId}"]`);
+          console.log(listItem);
+          if (listItem) {
+              listItem.classList.remove('fa-heart');
+              listItem.classList.add('fa-heart-o');
+              btn.textContent = 'Add to Favorite';
+          }
+          btn.dataset.favorite = 'false';
+        }else{
+          let favoriteIds = JSON.parse(localStorage.getItem('favoriteFoods')) || [];
+
+          if (!favoriteIds.includes(recipeId)) {
+            favoriteIds.push(recipeId);
+            localStorage.setItem('favoriteFoods', JSON.stringify(favoriteIds));
+          }
+
+          const listItem = document.querySelector(`.foodsList-item [data-id="${recipeId}"]`);
+          console.log(listItem);
+          if (listItem) {
+              listItem.classList.remove('fa-heart-o');
+              listItem.classList.add('fa-heart');
+              btn.textContent = 'Remove To Favorite';
+          }
+          btn.dataset.favorite = 'true';
+        }
+    });
+  }
 };
 
 const PopupApp = {
@@ -388,6 +456,7 @@ const PopupApp = {
     try {
       UIManager.setupPopupListeners();
       UIManager.closePopup();
+      UIManager.addFavoriteBtn();
     } catch (error) {
       console.error('Uygulama başlatılırken bir hata oluştu:', error);
     }

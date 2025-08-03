@@ -211,7 +211,7 @@ textarea.popup-input{
 
 /* mobil */
 @media  (min-width: 350px)and (max-width: 767px){
-  .popup-food > .popup-container{
+  .popup-container{
     width: 100%;
   }
 }

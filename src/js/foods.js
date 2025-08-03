@@ -1,6 +1,18 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import debounce from 'lodash/debounce';
+
+
+function showLoader() {
+  const loader = document.getElementById('loader');
+  if (loader) loader.style.display = 'block';
+}
+
+function hideLoader() {
+  const loader = document.getElementById('loader');
+  if (loader) loader.style.display = 'none';
+}
 
 const API_CONFIG = {
   BASE_URL: 'https://tasty-treats-backend.p.goit.global/api',
@@ -37,7 +49,7 @@ const ApiService = {
     } catch (error) {
       return handleError(error, 'getAllRecipes');
     }
-  },
+  }
 };
 
 const UIManager = {
@@ -51,8 +63,9 @@ const UIManager = {
   createFoodsCard(food) {
     const foodsList = document.querySelector('.foodsList');
     if (!foodsList) return;
-
-    foodsList.innerHTML = '';
+      foodsList.innerHTML = '';
+      
+    
 
     if (!food.results || food.results.length === 0) {
       iziToast.warning({
@@ -68,6 +81,7 @@ const UIManager = {
     for (const item of food.results) {
       const li = document.createElement('li');
       li.className = 'foodsList-item';
+      li.dataset.id = item._id;
       const StarsHTML = this.Getstars(item.rating);
 
       const favorites = JSON.parse(localStorage.getItem('favoriteFoods')) || [];
@@ -92,7 +106,6 @@ const UIManager = {
               </div>
             </div>
           </div>
-          
         </div>
       `;
       foodsList.appendChild(li);
@@ -193,10 +206,9 @@ const UIManager = {
   listenSearchForm() {
     const searchInput = document.querySelector('#search-input-text');
     const searchSelects = document.querySelectorAll('select');
-    let timeout;
 
     const updateStateAndFetch = () => {
-      this.currentState.inputValue = searchInput.value;
+      this.currentState.inputValue = searchInput.value.trim();
 
       const activeBtn = document.querySelector('.category-btn.active');
       this.currentState.category = activeBtn ? activeBtn.dataset.id : null;
@@ -211,9 +223,10 @@ const UIManager = {
       GetFoodsApp.init();
     };
 
+    const debouncedUpdate = debounce(updateStateAndFetch, 300);
+
     searchInput.addEventListener('input', () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(updateStateAndFetch, 300);
+      debouncedUpdate();
     });
 
     searchSelects.forEach(select => {
@@ -286,6 +299,12 @@ const UIManager = {
 const GetFoodsApp = {
   async init(page = UIManager.currentState.page) {
     try {
+      showLoader();
+      
+      // Sayfa değişikliğinde içeriği temizle
+      const foodsList = document.querySelector('.foodsList');
+      if (foodsList) foodsList.innerHTML = '';
+      
       UIManager.currentState.page = page;
       const { inputValue, selectedValues, category } = UIManager.currentState;
       const food = await ApiService.getAllRecipes(inputValue, selectedValues, category, page);
@@ -297,6 +316,8 @@ const GetFoodsApp = {
         position: 'topRight',
         timeout: 4000,
       });
+    } finally {
+      hideLoader();
     }
   },
 };
