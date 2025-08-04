@@ -42,6 +42,7 @@
   width: 100%;
   height: 100%;
   justify-content: space-between;
+  background-color: rgba(var(--list-bg-color), 0.45);
 }
 .food-box-content{
   display: flex;
@@ -84,9 +85,7 @@
 .raiting-foodButton:hover {
   color: var(--text-color);
 }
-.favorites .foodsList-item {
-  width: calc((100% - 48px) / 4);
-}
+
 .heartDiv{
   display: flex;
   align-self: flex-end;
@@ -97,14 +96,17 @@
 .foodsHeart{
   color:  var(--switch-active-color);
  }
+.favorites-food .foodsList-item {
+  width: calc((100% - 48px) / 4);
+}
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .foods > .container {
     padding: 0;
   }
-  .favorites{
+  .favorites-food .foodsList-item{
     width: calc((100% - 32px) / 2);
   }
-  .favorites .foodsList-item {
+   .foodsList-item {
     width: calc((100% - 48px) / 2);
   }
 }
@@ -112,7 +114,7 @@
   .foodsList-item {
     width: 100%;
   }
-  .favorites .foodsList-item {
+  .favorites-food .foodsList-item {
     width: 100%;
   }
   .foods > .container {

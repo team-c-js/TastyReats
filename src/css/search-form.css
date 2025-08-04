@@ -44,7 +44,31 @@ input,select{
 .search-select{
   font-size: 16px;
   font-weight: 500;
+  
 }
+.search-select option{
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  scroll-behavior: smooth;
+  transition: background-color 0.3s, color 0.3s;
+  color: rgba(var(--text-color-rgb), .5);
+  
+  
+}
+.search-select option:checked {
+  font-size: 20px;
+  color: var(--text-color) !important;
+}
+.search-select::-webkit-scrollbar {
+  width: 7px;
+}
+
+.search-select::-webkit-scrollbar-thumb {
+  background-color: var(--switch-bg-color);
+  border-radius: 10px;
+}
+
 .form-reset{
   margin:14px 0;
   display: flex;

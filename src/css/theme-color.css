@@ -1,4 +1,3 @@
-
 *{
     box-sizing: border-box;
 }
@@ -14,10 +13,12 @@
     --pagination-text-grey-rgb : 248,248,248;
     --star-color : #EEA10C;
     --switch-color: #F3F3F340;
-    --switch-bg-color: #A09EA099;
+    --switch-bg-color: #CECDCD;
     --switch-active-color: #9BB537;
     --btn-bg-color : #9BB537;
     --btn-text-color : #FFFFFF;
+    --list-bg-color : 5,5,5;
+    --mobile-menu-bg: #9BB537;
     
 }
 .dark-theme{
@@ -25,9 +26,11 @@
     --header-color : #FFFFFF;
     --text-color : #FFFFFF;
     --text-color-rgb : 255,255,255;
+    --mobile-menu-bg: #050505;
 }
 
 body{
     font-family: "Inter", sans-serif;
     background: var(--bg-color);
+    overflow-x: hidden;
 }

@@ -104,6 +104,12 @@ const ApiService = {
 const UIManager = {
     createTime(times){
         const timeSelect = document.querySelector('#search-time');
+        for (let i = 5; i <= 120; i += 5) {
+          const option = document.createElement('option');
+          option.value = i;
+          option.textContent = i;
+          timeSelect.appendChild(option);
+        }
     },
     createAreas(areas){
         const aresSelect = document.querySelector('#search-area');

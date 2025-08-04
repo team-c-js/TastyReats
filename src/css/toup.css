@@ -13,6 +13,7 @@
   display: none; 
   box-shadow: 0 2px 8px rgba(var(--text-color-rgb),.5);
   transition: all 0.5s ease;
+  z-index: 1;
 }
 
 .loader {

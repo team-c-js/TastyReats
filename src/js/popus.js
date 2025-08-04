@@ -107,9 +107,10 @@ const UIManager = {
   
   closePopup() {
     const closeBtn = document.querySelector('.popup-close');
-    const video = document.querySelector('.popup-video');
+    
     const popup = document.querySelector('.popup');
     function close(){
+      const video = document.querySelector('.popup-video');
       popup.style.display = 'none';
       popup.className = 'popup';
       video.innerHTML = '';
@@ -158,7 +159,7 @@ const UIManager = {
             </ul>
             <div class="popup-raiting-food">
                 <span class="popup-rainting-counter">
-                    ${recipe.rating}
+                    ${Math.ceil(recipe.rating * 10) / 10}
                 </span>
                 <div class="popup-starts">
                     ${this.Getstars(recipe.rating)}

@@ -154,7 +154,7 @@
         position: fixed;
         left: 0;
         top: 0;
-        background: var(--btn-bg-color);
+        background: var(--mobile-menu-bg);
         width: 50%;
         height: 100%;
         z-index: 999999;

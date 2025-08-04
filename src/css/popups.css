@@ -6,6 +6,7 @@
     left: 0;
     top: 0;
     overflow-y: auto;
+    z-index: 1;
 }
 .popup-container{
     position: relative;
@@ -87,7 +88,7 @@
 .popup-star.active{
     color: var(--star-color);
 }
-.popup-star:hover{
+.popup-raiting .popup-star:hover{
     color:  var(--star-color);
 }
 
@@ -211,7 +212,13 @@ textarea.popup-input{
 
 /* mobil */
 @media  (min-width: 350px)and (max-width: 767px){
-  .popup-container{
+  .popup-food > .popup-container{
+    width: 100%;
+  }
+  .popup-raiting > .popup-container{
+    width: 100%;
+  }
+  .popup-order > .popup-container{
     width: 100%;
   }
 }
