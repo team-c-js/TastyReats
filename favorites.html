@@ -9,7 +9,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" crossorigin href="/TastyReats/assets/styles-CN9_5HgR.css">
+    <script type="module" crossorigin src="/TastyReats/favorites.js"></script>
+    <link rel="modulepreload" crossorigin href="/TastyReats/assets/vendor-Dj3mOgk7.js">
+    <link rel="modulepreload" crossorigin href="/TastyReats/assets/popus-DnOOUVpe.js">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/popus-zwYPrsT5.css">
+    <link rel="stylesheet" crossorigin href="/TastyReats/assets/vendor-BIx4N7Dj.css">
   </head>
   <body>
     <header class="header">
@@ -59,7 +63,7 @@
     </div>
 </header>
 
-    <main class="favorites">
+    <main>
       
     <div class="fav-hero">
         <img src="/TastyReats/assets/fav-hero-CV0QfBFs.jpg" alt="Delicious Dish" class="hero-image" />
@@ -69,31 +73,17 @@
   <div class="container">
     <div class="favorites-container">
       <ul class="favorites-list">
-        <li><button class="favorites-btn">All categories</button></li>
-        <li><button class="favorites-btn">Beef</button></li>
-        <li><button class="favorites-btn">Breakfast</button></li>
-        <li><button class="favorites-btn">Chicken</button></li>
-        <li><button class="favorites-btn">Dessert</button></li>
-        <li><button class="favorites-btn">Goat</button></li>
-        <li><button class="favorites-btn">Lamb</button></li>
-        <li><button class="favorites-btn">Miscellaneous</button></li>
-        <li><button class="favorites-btn">Pasta</button></li>
-        <li><button class="favorites-btn">Pork</button></li>
-        <li><button class="favorites-btn">Seafood</button></li>
-        <li><button class="favorites-btn">Side</button></li>
-        <li><button class="favorites-btn">Soup</button></li>
-        <li><button class="favorites-btn">Starter</button></li>
-        <li><button class="favorites-btn">Vegan</button></li>
-        <li><button class="favorites-btn">Vegetarian</button></li>
       </ul>
     </div>
   </div>
 </div>
 
+      <div class="container">
+        <div class="loader" id="loader" style="display: none;"></div>
       <section class="foods">
     <div class="container">
         <div class="food-container">
-            <ul class="foodsList">
+            <ul class="foodsList favorites-food">
            
             </ul>
         </div>
@@ -106,7 +96,7 @@
   <div class="row">
     <div class="favorites-errors-icon">
       <svg class="favorites-errors-svg">
-        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#elements"></use>
+        <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-elements"></use>
       </svg>
     </div>
     <p class="favorites-errors-msg">
@@ -117,7 +107,105 @@
   </div>
 </section>
 
-    </main>
+      <section class="pagination">
+    <div class="container">
+        <div class="pagination-left">
+            <a href="#" class="pagination-btn pagination-btn-black" id="firstPage">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="pagination-btn pagination-btn-black" id="prevPage">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
+        </div>
 
+        <div id="paginationContainer" class="pagination-center"></div>
+
+        <div class="pagination-right">
+            <a href="#" class="pagination-btn pagination-btn-green" id="nextPage">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+            <a href="#" class="pagination-btn pagination-btn-green" id="lastPage">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</section>
+      </div>
+    </main>
+    <button id="scrollToTopBtn" title="Yukarı çık">&#8679;</button>
+    <div class="popups">
+        <section class="popup popup-food">
+    <div class="popup-container">
+        <div class="popup-header">
+            <i class="fa fa-times popup-close" aria-hidden="true"></i>
+        </div>
+        <div class="popup-content">
+            
+        </div>
+    </div>
+</section>
+        <section class="popup popup-raiting">
+    <div class="popup-container">
+        <div class="popup-header">
+            <i class="fa fa-times popup-close" aria-hidden="true"></i>
+        </div>
+        <div class="popup-content">
+            
+        </div>
+    </div>
+</section>
+
+
+        <section class="popup popup-order">
+    <div class="popup-container">
+        <div class="popup-header">
+            <svg class="popup-svg-close">
+                <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-close"></use>
+            </svg>
+        </div>
+            <i class="fa fa-times popup-close" aria-hidden="true"></i>
+        </div>
+
+        <div class="popup-content">
+            <h3 class="popup-title">ORDER NOW</h3>
+            <form action="" class="popup-order-form">
+              <div class="form-row">
+                <label for="name">Name</label>
+                <input type="text" class="popup-input"  id="name" required>
+              </div>
+              <div class="form-row">
+                <label for="phone-number">Name</label>
+                <input type="text" class="popup-input"  id="phone-number" required>
+              </div>
+              <div class="form-row">
+                <label for="email">Name</label>
+                <input type="text" class="popup-input"  id="email" required>
+              </div>
+              <div class="form-row">
+                <label for="Comment">Comment</label>
+                <textarea name="" id="" class="popup-input"></textarea>
+              </div>
+              <button class="popup-green-btn">Send</button>
+            </form>
+        </div>
+    </div>
+</section>
+</section>
+
+
+      </div>
+      <footer class="footer">
+  <div class="container">
+    <p class="footer-desc">
+      Made with  by
+      <a href="https://github.com/team-c-js/TastyReats" target="_blank">
+        goIT Students Team 
+      </a>
+    </p>
+  </div>
+</footer>
+
   </body>
 </html>
