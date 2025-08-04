@@ -46,11 +46,3 @@ closeBtn.addEventListener('click', (e)=> {
         });
     });
 });
-
-    window.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-        themeToggle.checked = true;
-        }
-    });
