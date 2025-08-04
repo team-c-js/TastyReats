@@ -1,8 +1,8 @@
 
 const burgerMenu = document.querySelector('.mobile-menu');
-const burderBtn     = document.querySelector('.burger-menu');
+const burgerBtn     = document.querySelector('.burger-menu');
 const closeBtn      = document.querySelector('#mobile-close');
-burderBtn.addEventListener('click', (e)=> {
+burgerBtn.addEventListener('click', (e)=> {
     e.preventDefault();
     burgerMenu.style.display = 'flex';
 });
@@ -47,7 +47,6 @@ closeBtn.addEventListener('click', (e)=> {
     });
 });
 
-    // Sayfa yüklendiğinde tema durumunu yükle //
     window.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {

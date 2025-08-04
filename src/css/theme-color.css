@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/static/inter-variablefont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900; /* Tüm ağırlık aralığı */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* İtalik (eğik) stil için */
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/static/inter-italic-variablefont-opsz,wght.ttf') format('truetype');
+  font-weight: 100 900; /* Tüm ağırlık aralığı */
+  font-style: italic;
+  font-display: swap;
+}
 *{
     box-sizing: border-box;
 }

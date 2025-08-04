@@ -82,7 +82,7 @@ const UIManager = {
       const li = document.createElement('li');
       li.className = 'foodsList-item';
       li.dataset.id = item._id;
-      const StarsHTML = this.Getstars(item.rating);
+      const starsHTML = this.getStars(item.rating);
 
       const favorites = JSON.parse(localStorage.getItem('favoriteFoods')) || [];
       const isFavorite = favorites.includes(item._id);
@@ -100,7 +100,7 @@ const UIManager = {
             <div class="raiting-foodContainer">
               <div class="raiting-food">
                 <span class="raiting-foodPoint">${Math.ceil(item.rating * 10) / 10}
-                  <span class="raiting-foodStars">${StarsHTML}</span>
+                  <span class="raiting-foodStars">${starsHTML}</span>
                 </span>
                 <button class="raiting-foodButton" data-id="${item._id}" data-popup="popup-food">See recipe</button>
               </div>
@@ -114,15 +114,15 @@ const UIManager = {
     this.renderPagination(food.totalPages, food.page);
   },
 
-  Getstars(r) {
-    let starsHtml = '';
+  getStars(r) {
+    let starsHTML = '';
     const ratingStar = Math.floor(r);
     for (let i = 0; i < 5; i++) {
-      starsHtml += i < ratingStar
+      starsHTML += i < ratingStar
         ? `<i class="fa fa-star popup-star active" aria-hidden="true"></i>`
         : `<i class="fa fa-star popup-star" aria-hidden="true"></i>`;
     }
-    return starsHtml;
+    return starsHTML;
   },
 
   renderPagination(totalPages, currentPage) {

@@ -162,7 +162,7 @@ const UIManager = {
                     ${Math.ceil(recipe.rating * 10) / 10}
                 </span>
                 <div class="popup-starts">
-                    ${this.Getstars(recipe.rating)}
+                    ${this.getStars(recipe.rating)}
                 </div>
                 <span class="popup-time">
                     ${recipe.time} min
@@ -398,7 +398,7 @@ const UIManager = {
     });
   },
   
-  Getstars(star) {
+  getStars(star) {
     let starsHtml = ``;
     const raitingStar = Math.floor(star);
     const TotalStars = 5;
