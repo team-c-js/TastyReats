@@ -1,0 +1,14 @@
+.footer{
+    max-width: 100%;
+}
+.footer > .container {
+    padding: 20px;
+    text-align: center;
+    color: var(--btn-bg-color);
+}
+.footer-desc{
+    transition: all .3s ease;
+}
+.footer-desc:hover{
+    transform: scale(1.02);
+}

@@ -101,12 +101,18 @@
   .foods > .container {
     padding: 0;
   }
-  .foodsList-item {
+  .favorites{
     width: calc((100% - 32px) / 2);
+  }
+  .favorites .foodsList-item {
+    width: calc((100% - 48px) / 2);
   }
 }
 @media screen and (min-width: 350px) and (max-width: 767px) {
   .foodsList-item {
+    width: 100%;
+  }
+  .favorites .foodsList-item {
     width: 100%;
   }
   .foods > .container {
