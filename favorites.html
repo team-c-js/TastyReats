@@ -5,8 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/TastyReats/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
-    <link rel="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.css">    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="/TastyReats/favorites.js"></script>
@@ -36,12 +35,12 @@
                 </button>
                 <!--Toggle-->
                 <div class="theme-switcher-js" id="lage-switcher">
-                    <input type="checkbox" class="input-switcher" id="switch-desktop" />
+                    <input type="checkbox" class="input-switcher" id="switch-desktop">
                     <label class="input-label" for="switch-desktop">Toggle</label>
                 </div>
                 <!--Hamburger menu-->
-                <button class="burger-menu" type="button" id='denem' aria-expanded="false" aria-controls="mobile-menu">
-                    <i class="fa fa-bars" id="burger-menu-icon" aria-hidden="true"></i>
+                <button class="burger-menu" type="button" id='denem' >
+                    <i class="fa fa-bars" id="burger-menu-icon" ></i>
                 </button>
             </div>
             <div class="mobile-menu">
@@ -55,7 +54,7 @@
                     </li>
                 </ul>
                 <div class="theme-switcher-js" id="mobile-switcher">
-                    <input type="checkbox" class="input-switcher" id="switch-mobile" />
+                    <input type="checkbox" class="input-switcher" id="switch-mobile">
                     <label class="input-label" for="switch-mobile">Toggle</label>
                 </div>
             </div>
@@ -161,16 +160,12 @@
         <section class="popup popup-order">
     <div class="popup-container">
         <div class="popup-header">
-            <svg class="popup-svg-close">
-                <use href="/TastyReats/assets/symbol-defs-BdRXAF2n.svg#icon-close"></use>
-            </svg>
-        </div>
             <i class="fa fa-times popup-close" aria-hidden="true"></i>
         </div>
 
         <div class="popup-content">
             <h3 class="popup-title">ORDER NOW</h3>
-            <form action="" class="popup-order-form">
+            <form action="#" class="popup-order-form">
               <div class="form-row">
                 <label for="name">Name</label>
                 <input type="text" class="popup-input"  id="name" required>
@@ -185,7 +180,7 @@
               </div>
               <div class="form-row">
                 <label for="Comment">Comment</label>
-                <textarea name="" id="" class="popup-input"></textarea>
+                <textarea name="comment" id="comment-field" class="popup-input"></textarea>
               </div>
               <button class="popup-green-btn">Send</button>
             </form>
