@@ -221,8 +221,8 @@ const UIManager = {
             <input type="email" class="popup-input" id="email" required>
           </div>
           <div class="form-row">
-            <label for="comment">Comment</label>
-            <textarea class="popup-input" id="comment"></textarea>
+            <label for="user-comment">Comment</label>
+            <textarea name="user_comment" id="user-comment" class="popup-input" ></textarea>
           </div>
           <button type="submit" class="popup-green-btn">Send</button>
         </form>
