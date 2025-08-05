@@ -86,7 +86,7 @@ const UIManager = {
     popup.classList.remove('popup-food', 'popup-raiting', 'popup-order');
     popup.classList.add(`${popupType}`);
     popup.style.display = 'block';
-    
+    document.body.style.overflow = 'hidden';
     this.resetPopupContent();
     
     if(popupType === 'popup-food'){
@@ -113,6 +113,7 @@ const UIManager = {
       const video = document.querySelector('.popup-video');
       popup.style.display = 'none';
       popup.className = 'popup';
+      document.body.style.overflow = 'auto';
       video.innerHTML = '';
     }
     closeBtn.addEventListener('click', (e) => {
@@ -266,7 +267,6 @@ const UIManager = {
     const ratingForm = document.querySelector('.popup-order-form');
     let currentRating = 0;
 
-    // Yıldız tıklama ve hover etkileri
     stars.forEach(star => {
       star.addEventListener('click', () => {
         currentRating = parseInt(star.getAttribute('data-value'));
@@ -355,7 +355,7 @@ const UIManager = {
         name: orderForm.querySelector('#name').value.trim(),
         phone: orderForm.querySelector('#phone-number').value.trim(),
         email: orderForm.querySelector('#email').value.trim(),
-        comment: orderForm.querySelector('#comment').value.trim()
+        comment: orderForm.querySelector('#user-comment').value.trim()
       };
       
       if (!formData.name || !formData.phone || !formData.email) {
@@ -376,13 +376,22 @@ const UIManager = {
       try {
         const result = await ApiService.createOrder(formData);
         if (result) {
-          console.log('Sipariş eklendi');
           const popup = document.querySelector('.popup');
           popup.style.display = 'none';
+          iziToast.success({
+              title: 'Teşekkürler!',
+              message: 'Siparişiniz Başarıyla Alındı!',
+              position: 'topRight', 
+              timeout: 3000,        
+            });
         }
       } catch (error) {
-        console.error('Sipariş gönderilirken hata:', error);
-        alert('Sipariş gönderilirken bir hata oluştu. Lütfen tekrar deneyin.');
+        iziToast.success({
+              title: 'Hata!',
+              message: 'Sipariş gönderilirken hata:', error,
+              position: 'topRight', 
+              timeout: 3000,        
+        });
       }
     });
   },

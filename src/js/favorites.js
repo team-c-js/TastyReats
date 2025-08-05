@@ -99,7 +99,7 @@ const UIManager = {
             <p class="foodContent-text">${item.description?.slice(0, 60)}...</p>
             <div class="raiting-foodContainer">
               <div class="raiting-food">
-                <span class="raiting-foodPoint">${item.rating}
+                <span class="raiting-foodPoint">${Math.ceil(item.rating * 10) / 10}
                   <span class="raiting-foodStars">${starsHTML}</span>
                 </span>
                 <button class="raiting-foodButton" data-id="${item._id}" data-popup="popup-food">See recipe</button>

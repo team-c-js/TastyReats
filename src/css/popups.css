@@ -98,6 +98,17 @@
     height: 204px;
     overflow-y: auto;
 }
+.popup-recipt::-webkit-scrollbar{
+  width: 8px;
+  background: transparent;
+}
+.popup-recipt::-webkit-scrollbar-track{
+  background-color: transparent;
+}
+.popup-recipt::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: var(--switch-bg-color);
+}
 .popup-recipt-item{
     border-bottom: 1px solid rgba(var(--text-color-rgb),0.1);
     display: flex;
@@ -108,6 +119,17 @@
     margin-bottom: 32px;
     height: 204px;
     overflow-y: auto;
+}
+.popup-desc::-webkit-scrollbar{
+  width: 8px;
+  background: transparent;
+}
+.popup-desc::-webkit-scrollbar-track{
+  background-color: transparent;
+}
+.popup-desc::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: var(--switch-bg-color);
 }
 .popup-buttons{
     margin-bottom: 32px;
