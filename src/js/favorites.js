@@ -89,7 +89,7 @@ const UIManager = {
       const heartClass = 'fa-heart';
 
       li.innerHTML = `
-        <img src="${item.thumb}" alt="${item.preview}" class="foodsList-itemImg" fetchpriority="high">
+        <img src="${item.thumb}" alt="${item.preview}" class="foodsList-itemImg">
         <div class="food-content">
           <div class="heartDiv">
             <i class="fa ${heartClass} fa-2x foodsHeart" aria-hidden="true" data-id="${item._id}"></i>
